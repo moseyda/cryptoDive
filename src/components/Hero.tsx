@@ -1,9 +1,9 @@
 export default function Hero() {
   return (
     <section className="relative pt-32 pb-20 flex flex-col items-center justify-center text-center px-4 w-full max-w-[1728px] mx-auto min-h-[800px]">
-      {/* Background ambient glows (simulating Figma blurred ellipses) */}
-      <div className="absolute top-[20%] left-[15%] w-[500px] h-[500px] bg-[#00ffa0] opacity-20 blur-[150px] rounded-full pointer-events-none -z-10"></div>
-      <div className="absolute top-[10%] right-[10%] w-[400px] h-[400px] bg-purple-600 opacity-20 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+      {/* Background ambient light blue circle highlights */}
+      <div className="absolute top-[10%] left-[20%] w-[600px] h-[600px] bg-blue-500/20 blur-[150px] rounded-full pointer-events-none -z-10"></div>
+      <div className="absolute top-[40%] right-[15%] w-[500px] h-[500px] bg-cyan-400/20 blur-[150px] rounded-full pointer-events-none -z-10"></div>
       
       {/* Headline */}
       <h1 className="text-[50px] md:text-[70px] lg:text-[95px] font-bold text-[#00ffa0] leading-[1.1] max-w-[900px] mb-8 drop-shadow-[0_0_15px_rgba(0,255,160,0.3)]">
