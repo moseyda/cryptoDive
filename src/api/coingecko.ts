@@ -1,4 +1,4 @@
-import { CoinGeckoResponse } from '../types/crypto';
+import type { CoinGeckoResponse } from '../types/crypto';
 
 const API_BASE_URL = 'https://api.coingecko.com/api/v3';
 

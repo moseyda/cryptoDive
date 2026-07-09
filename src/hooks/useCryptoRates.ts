@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchCryptoPrices } from '../api/coingecko';
-import { CoinGeckoResponse } from '../types/crypto';
+import type { CoinGeckoResponse } from '../types/crypto';
 
 export const useCryptoRates = () => {
   const [rates, setRates] = useState<CoinGeckoResponse | null>(null);
