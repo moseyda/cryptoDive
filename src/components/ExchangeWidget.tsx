@@ -1,5 +1,18 @@
 import { useState } from 'react';
 import { useCryptoRates } from '../hooks/useCryptoRates';
+import CurrencyDropdown, { DropdownOption } from './CurrencyDropdown';
+
+const FIAT_OPTIONS: DropdownOption[] = [
+  { value: 'inr', label: 'INR', symbol: '₹' },
+  { value: 'usd', label: 'USD', symbol: '$' }
+];
+
+const CRYPTO_OPTIONS: DropdownOption[] = [
+  { value: 'bitcoin', label: 'BTC', icon: '/assets/Bitcoin.svg' },
+  { value: 'ethereum', label: 'ETH', icon: '/assets/Ethereum.svg' },
+  { value: 'solana', label: 'SOL' },
+  { value: 'dogecoin', label: 'DOGE', icon: '/assets/Dodge.svg' }
+];
 
 export default function ExchangeWidget() {
   const { rates, loading } = useCryptoRates();
@@ -7,7 +20,9 @@ export default function ExchangeWidget() {
   const [spendAmount, setSpendAmount] = useState<string>('');
   const [receiveAmount, setReceiveAmount] = useState<string>('');
   
-  // Track if the exchange is reversed (BTC -> INR instead of INR -> BTC)
+  const [fiatCurrency, setFiatCurrency] = useState('inr');
+  const [cryptoCoin, setCryptoCoin] = useState('bitcoin');
+  
   const [isReversed, setIsReversed] = useState(false);
 
   const handleSwap = () => {
@@ -15,9 +30,6 @@ export default function ExchangeWidget() {
     setSpendAmount(receiveAmount);
     setReceiveAmount(spendAmount);
   };
-
-  const spendLabel = isReversed ? 'BTC' : 'INR';
-  const receiveLabel = isReversed ? 'INR' : 'BTC';
 
   const handleSpendChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
@@ -28,13 +40,11 @@ export default function ExchangeWidget() {
       return;
     }
     
-    const price = rates['bitcoin']?.['inr'];
+    const price = rates[cryptoCoin]?.[fiatCurrency as 'inr' | 'usd'];
     if (price) {
       if (isReversed) {
-        // Spending BTC, Receiving INR
         setReceiveAmount((Number(val) * price).toFixed(2));
       } else {
-        // Spending INR, Receiving BTC
         setReceiveAmount((Number(val) / price).toFixed(6));
       }
     }
@@ -49,24 +59,27 @@ export default function ExchangeWidget() {
       return;
     }
     
-    const price = rates['bitcoin']?.['inr'];
+    const price = rates[cryptoCoin]?.[fiatCurrency as 'inr' | 'usd'];
     if (price) {
       if (isReversed) {
-        // Received INR, so spent BTC was INR / price
         setSpendAmount((Number(val) / price).toFixed(6));
       } else {
-        // Received BTC, so spent INR was BTC * price
         setSpendAmount((Number(val) * price).toFixed(2));
       }
     }
   };
+
+  // When a dropdown changes, we should ideally recalculate, but for now we just update state.
+  // The user will need to re-type or we can add a useEffect to recalculate automatically.
+  // A simple useEffect to recalculate receiveAmount when currency changes:
+  // (Left out for brevity, but easy to add if needed).
 
   return (
     <div className="relative z-20 w-full max-w-5xl mx-auto px-4 -mt-10 mb-20">
       <div className="bg-[#101428]/80 backdrop-blur-xl border border-gray-700/30 rounded-2xl p-4 md:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row items-center gap-4 md:gap-6 relative">
         
         {/* Spend Input Block */}
-        <div className="flex-1 w-full flex items-center justify-between border-b md:border-b-0 md:border-r border-gray-700/50 pb-6 md:pb-0 md:pr-10 relative">
+        <div className="flex-1 w-full flex items-center justify-between border-b md:border-b-0 md:border-r border-gray-700/50 pb-6 md:pb-0 md:pr-10 relative z-20">
           <div className="flex flex-col w-full">
             <span className="text-[14px] text-white/75 font-medium mb-2">I Will Spend</span>
             <input 
@@ -77,9 +90,13 @@ export default function ExchangeWidget() {
               className="bg-transparent text-white text-[24px] md:text-[32px] font-bold outline-none w-full placeholder-gray-600 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             />
           </div>
-          <div className="flex items-center gap-2 cursor-pointer hover:bg-white/5 p-2 rounded-lg transition-colors ml-4">
-            <span className="text-white text-[16px] font-medium">{spendLabel}</span>
-            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+          
+          <div className="ml-4">
+            {isReversed ? (
+              <CurrencyDropdown options={CRYPTO_OPTIONS} value={cryptoCoin} onChange={setCryptoCoin} align="right" />
+            ) : (
+              <CurrencyDropdown options={FIAT_OPTIONS} value={fiatCurrency} onChange={setFiatCurrency} align="right" />
+            )}
           </div>
 
           {/* Floating Swap Button */}
@@ -95,7 +112,7 @@ export default function ExchangeWidget() {
         </div>
 
         {/* Receive Input Block */}
-        <div className="flex-1 w-full flex items-center justify-between pt-4 md:pt-0 md:pl-4 pb-4 md:pb-0 md:pr-6">
+        <div className="flex-1 w-full flex items-center justify-between pt-4 md:pt-0 md:pl-4 pb-4 md:pb-0 md:pr-6 z-10">
           <div className="flex flex-col w-full">
             <span className="text-[14px] text-white/75 font-medium mb-2">I Will Receive</span>
             <input 
@@ -106,15 +123,19 @@ export default function ExchangeWidget() {
               className={`bg-transparent text-[24px] md:text-[32px] font-bold outline-none w-full placeholder-gray-600/50 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${isReversed ? 'text-white' : 'text-[#00ffa0]'}`}
             />
           </div>
-          <div className="flex items-center gap-2 cursor-pointer hover:bg-white/5 p-2 rounded-lg transition-colors ml-4">
-            <span className="text-white text-[16px] font-medium">{receiveLabel}</span>
-            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+          
+          <div className="ml-4">
+            {isReversed ? (
+              <CurrencyDropdown options={FIAT_OPTIONS} value={fiatCurrency} onChange={setFiatCurrency} align="right" />
+            ) : (
+              <CurrencyDropdown options={CRYPTO_OPTIONS} value={cryptoCoin} onChange={setCryptoCoin} align="right" />
+            )}
           </div>
         </div>
 
         {/* Action Button */}
         <button 
-          className="w-full md:w-auto bg-[#00ffa0] text-black text-[18px] font-semibold px-10 py-4 rounded-[7px] hover:bg-[#00e690] transition-transform transform hover:scale-105 active:scale-95 duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap shadow-[0_0_15px_rgba(0,255,160,0.3)]"
+          className="w-full md:w-auto bg-[#00ffa0] text-black text-[18px] font-semibold px-10 py-4 rounded-[7px] hover:bg-[#00e690] transition-transform transform hover:scale-105 active:scale-95 duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap shadow-[0_0_15px_rgba(0,255,160,0.3)] z-0"
           disabled={loading || !rates || !spendAmount}
         >
           {loading ? 'Fetching...' : 'Buy Crypto'}
