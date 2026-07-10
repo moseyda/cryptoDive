@@ -3,15 +3,36 @@ import { useCryptoRates } from '../hooks/useCryptoRates';
 import CurrencyDropdown, { type DropdownOption } from './CurrencyDropdown';
 
 const FIAT_OPTIONS: DropdownOption[] = [
+  { value: 'usd', label: 'USD', symbol: '$' },
   { value: 'inr', label: 'INR', symbol: '₹' },
-  { value: 'usd', label: 'USD', symbol: '$' }
+  { value: 'eur', label: 'EUR', symbol: '€' },
+  { value: 'gbp', label: 'GBP', symbol: '£' },
+  { value: 'aud', label: 'AUD', symbol: 'A$' },
+  { value: 'cad', label: 'CAD', symbol: 'C$' },
+  { value: 'jpy', label: 'JPY', symbol: '¥' }
 ];
 
 const CRYPTO_OPTIONS: DropdownOption[] = [
   { value: 'bitcoin', label: 'BTC', icon: '/assets/Bitcoin.svg' },
   { value: 'ethereum', label: 'ETH', icon: '/assets/Ethereum.svg' },
+  { value: 'tether', label: 'USDT', icon: '/assets/Tether.svg' },
+  { value: 'binancecoin', label: 'BNB', icon: '/assets/BinanceCoin.svg' },
   { value: 'solana', label: 'SOL' },
-  { value: 'dogecoin', label: 'DOGE', icon: '/assets/Dodge.svg' }
+  { value: 'ripple', label: 'XRP' },
+  { value: 'usd-coin', label: 'USDC' },
+  { value: 'cardano', label: 'ADA', icon: '/assets/Cardano.svg' },
+  { value: 'avalanche-2', label: 'AVAX' },
+  { value: 'dogecoin', label: 'DOGE', icon: '/assets/Dodge.svg' },
+  { value: 'polkadot', label: 'DOT' },
+  { value: 'chainlink', label: 'LINK' },
+  { value: 'matic-network', label: 'MATIC' },
+  { value: 'shiba-inu', label: 'SHIB' },
+  { value: 'litecoin', label: 'LTC' },
+  { value: 'bitcoin-cash', label: 'BCH' },
+  { value: 'uniswap', label: 'UNI' },
+  { value: 'cosmos', label: 'ATOM' },
+  { value: 'stellar', label: 'XLM' },
+  { value: 'monero', label: 'XMR' }
 ];
 
 export default function ExchangeWidget() {
