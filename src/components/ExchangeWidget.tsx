@@ -141,7 +141,7 @@ export default function ExchangeWidget() {
               placeholder="0.00"
               value={receiveAmount}
               onChange={handleReceiveChange}
-              className={`bg-transparent text-[24px] md:text-[32px] font-bold outline-none w-full placeholder-gray-600/50 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${isReversed ? 'text-white' : 'text-[#00ffa0]'}`}
+              className="bg-transparent text-[#00ffa0] text-[24px] md:text-[32px] font-bold outline-none w-full placeholder-gray-600/50 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             />
           </div>
           
