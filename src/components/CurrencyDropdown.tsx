@@ -55,14 +55,14 @@ export default function CurrencyDropdown({ options, value, onChange, align = 'ri
         className="flex items-center gap-2 cursor-pointer hover:bg-white/10 p-2 rounded-lg transition-colors border border-transparent hover:border-gray-700"
       >
         {selectedOption.icon && (
-          <img src={selectedOption.icon} alt={selectedOption.label} className="w-5 h-5 rounded-full object-cover" />
+          <img src={selectedOption.icon} alt={selectedOption.label} className="w-5 h-5 rounded-full object-cover flex-shrink-0" />
         )}
-        <span className="text-white text-[16px] font-medium">{selectedOption.label}</span>
+        <span className="text-white text-[16px] font-medium whitespace-nowrap">{selectedOption.label}</span>
         {selectedOption.symbol && (
-          <span className="text-gray-400 font-medium text-[16px]">{selectedOption.symbol}</span>
+          <span className="text-gray-400 font-medium text-[16px] flex-shrink-0">{selectedOption.symbol}</span>
         )}
         <svg 
-          className={`w-4 h-4 text-white transition-transform duration-200 ml-1 ${isOpen ? 'rotate-180' : ''}`} 
+          className={`w-4 h-4 flex-shrink-0 text-white transition-transform duration-200 ml-1 ${isOpen ? 'rotate-180' : ''}`} 
           fill="none" 
           stroke="currentColor" 
           viewBox="0 0 24 24"

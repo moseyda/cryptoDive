@@ -4,12 +4,12 @@ import CurrencyDropdown, { type DropdownOption } from './CurrencyDropdown';
 
 const FIAT_OPTIONS: DropdownOption[] = [
   { value: 'usd', label: 'USD', symbol: '$' },
-  { value: 'inr', label: 'INR', symbol: '₹' },
-  { value: 'eur', label: 'EUR', symbol: '€' },
   { value: 'gbp', label: 'GBP', symbol: '£' },
+  { value: 'eur', label: 'EUR', symbol: '€' },
+  { value: 'jpy', label: 'JPY', symbol: '¥' },
   { value: 'aud', label: 'AUD', symbol: 'A$' },
-  { value: 'cad', label: 'CAD', symbol: 'C$' },
-  { value: 'jpy', label: 'JPY', symbol: '¥' }
+  { value: 'inr', label: 'INR', symbol: '₹' },
+  { value: 'cad', label: 'CAD', symbol: 'C$' }
 ];
 
 const CRYPTO_OPTIONS: DropdownOption[] = [
@@ -41,7 +41,7 @@ export default function ExchangeWidget() {
   const [spendAmount, setSpendAmount] = useState<string>('');
   const [receiveAmount, setReceiveAmount] = useState<string>('');
   
-  const [fiatCurrency, setFiatCurrency] = useState('inr');
+  const [fiatCurrency, setFiatCurrency] = useState('usd');
   const [cryptoCoin, setCryptoCoin] = useState('bitcoin');
   
   const [isReversed, setIsReversed] = useState(false);
