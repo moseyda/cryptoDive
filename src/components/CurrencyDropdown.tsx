@@ -54,9 +54,15 @@ export default function CurrencyDropdown({ options, value, onChange, align = 'ri
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 cursor-pointer hover:bg-white/10 p-2 rounded-lg transition-colors border border-transparent hover:border-gray-700"
       >
+        {selectedOption.icon && (
+          <img src={selectedOption.icon} alt={selectedOption.label} className="w-5 h-5 rounded-full object-cover" />
+        )}
         <span className="text-white text-[16px] font-medium">{selectedOption.label}</span>
+        {selectedOption.symbol && (
+          <span className="text-gray-400 font-medium text-[16px]">{selectedOption.symbol}</span>
+        )}
         <svg 
-          className={`w-4 h-4 text-white transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} 
+          className={`w-4 h-4 text-white transition-transform duration-200 ml-1 ${isOpen ? 'rotate-180' : ''}`} 
           fill="none" 
           stroke="currentColor" 
           viewBox="0 0 24 24"
