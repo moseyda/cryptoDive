@@ -96,7 +96,7 @@ export default function ExchangeWidget() {
   // (Left out for brevity, but easy to add if needed).
 
   return (
-    <div className="relative z-20 w-full max-w-5xl mx-auto px-4 -mt-10 mb-20">
+    <div id="exchange-widget" className="relative z-20 w-full max-w-5xl mx-auto px-4 -mt-10 mb-20">
       <div className="bg-[#101428]/80 backdrop-blur-xl border border-gray-700/30 rounded-2xl p-4 md:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row items-center gap-4 md:gap-6 relative">
         
         {/* Spend Input Block */}

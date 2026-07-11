@@ -2,6 +2,7 @@ import './index.css';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ExchangeWidget from './components/ExchangeWidget';
+import MarketTrends from './components/MarketTrends';
 
 export default function App() {
   return (
@@ -9,6 +10,7 @@ export default function App() {
       <Navbar />
       <Hero />
       <ExchangeWidget />
+      <MarketTrends />
     </div>
   );
 }
