@@ -20,7 +20,7 @@ export default function Navbar() {
 
       {/* Action Buttons */}
       <div className="flex items-center">
-        <button className="bg-[#00ffa0] text-black text-[24px] font-semibold px-10 py-4 rounded-[47px] hover:bg-[#00e690] transition-colors transform hover:scale-105 active:scale-95 duration-200">
+        <button className="bg-[#00ffa0] text-black text-[24px] font-semibold px-10 py-2.5 rounded-[47px] hover:bg-[#00e690] transition-colors transform hover:scale-105 active:scale-95 duration-200">
           Sign Up
         </button>
       </div>
