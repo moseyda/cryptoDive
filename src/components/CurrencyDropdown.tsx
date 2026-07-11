@@ -17,6 +17,7 @@ interface CurrencyDropdownProps {
 export default function CurrencyDropdown({ options, value, onChange, align = 'right' }: CurrencyDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [openDirection, setOpenDirection] = useState<'down' | 'up'>('down');
   const dropdownRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -33,10 +34,23 @@ export default function CurrencyDropdown({ options, value, onChange, align = 'ri
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Focus search input when opened
+  // Focus search input and determine open direction when opened
   useEffect(() => {
-    if (isOpen && searchInputRef.current) {
-      searchInputRef.current.focus();
+    if (isOpen) {
+      if (dropdownRef.current) {
+        const rect = dropdownRef.current.getBoundingClientRect();
+        const spaceBelow = window.innerHeight - rect.bottom;
+        // If less than ~320px below, open upwards to avoid page scrollbars
+        if (spaceBelow < 320) {
+          setOpenDirection('up');
+        } else {
+          setOpenDirection('down');
+        }
+      }
+      
+      if (searchInputRef.current) {
+        searchInputRef.current.focus();
+      }
     } else {
       setSearchQuery(''); // Reset search when closed
     }
@@ -74,7 +88,7 @@ export default function CurrencyDropdown({ options, value, onChange, align = 'ri
       {/* Dropdown Menu */}
       {isOpen && (
         <div 
-          className={`absolute top-full mt-2 w-56 bg-[#101428] border border-gray-700 rounded-xl shadow-2xl z-50 overflow-hidden ${align === 'right' ? 'right-0' : 'left-0'}`}
+          className={`absolute ${openDirection === 'up' ? 'bottom-full mb-2' : 'top-full mt-2'} w-56 bg-[#101428] border border-gray-700 rounded-xl shadow-2xl z-50 overflow-hidden ${align === 'right' ? 'right-0' : 'left-0'}`}
         >
           {/* Search Input */}
           <div className="p-2 border-b border-gray-700">
