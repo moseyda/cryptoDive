@@ -13,26 +13,26 @@ const FIAT_OPTIONS: DropdownOption[] = [
 ];
 
 const CRYPTO_OPTIONS: DropdownOption[] = [
-  { value: 'bitcoin', label: 'BTC', icon: '/assets/Bitcoin.svg' },
-  { value: 'ethereum', label: 'ETH', icon: '/assets/Ethereum.svg' },
-  { value: 'tether', label: 'USDT', icon: '/assets/Tether.svg' },
-  { value: 'binancecoin', label: 'BNB', icon: '/assets/BinanceCoin.svg' },
-  { value: 'solana', label: 'SOL', icon: '/assets/Solana.svg' },
-  { value: 'ripple', label: 'XRP' },
-  { value: 'usd-coin', label: 'USDC' },
-  { value: 'cardano', label: 'ADA', icon: '/assets/Cardano.svg' },
-  { value: 'avalanche-2', label: 'AVAX' },
-  { value: 'dogecoin', label: 'DOGE', icon: '/assets/Dodge.svg' },
-  { value: 'polkadot', label: 'DOT' },
-  { value: 'chainlink', label: 'LINK' },
-  { value: 'matic-network', label: 'MATIC' },
-  { value: 'shiba-inu', label: 'SHIB' },
-  { value: 'litecoin', label: 'LTC' },
-  { value: 'bitcoin-cash', label: 'BCH' },
-  { value: 'uniswap', label: 'UNI' },
-  { value: 'cosmos', label: 'ATOM' },
-  { value: 'stellar', label: 'XLM' },
-  { value: 'monero', label: 'XMR' }
+  { value: 'bitcoin', label: 'BTC', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/btc.svg' },
+  { value: 'ethereum', label: 'ETH', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/eth.svg' },
+  { value: 'tether', label: 'USDT', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/usdt.svg' },
+  { value: 'binancecoin', label: 'BNB', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/bnb.svg' },
+  { value: 'solana', label: 'SOL', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/sol.svg' },
+  { value: 'ripple', label: 'XRP', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/xrp.svg' },
+  { value: 'usd-coin', label: 'USDC', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/usdc.svg' },
+  { value: 'cardano', label: 'ADA', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/ada.svg' },
+  { value: 'avalanche-2', label: 'AVAX', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/avax.svg' },
+  { value: 'dogecoin', label: 'DOGE', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/doge.svg' },
+  { value: 'polkadot', label: 'DOT', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/dot.svg' },
+  { value: 'chainlink', label: 'LINK', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/link.svg' },
+  { value: 'matic-network', label: 'MATIC', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/matic.svg' },
+  { value: 'shiba-inu', label: 'SHIB', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/shib.svg' },
+  { value: 'litecoin', label: 'LTC', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/ltc.svg' },
+  { value: 'bitcoin-cash', label: 'BCH', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/bch.svg' },
+  { value: 'uniswap', label: 'UNI', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/uni.svg' },
+  { value: 'cosmos', label: 'ATOM', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/atom.svg' },
+  { value: 'stellar', label: 'XLM', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/xlm.svg' },
+  { value: 'monero', label: 'XMR', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/xmr.svg' }
 ];
 
 export default function ExchangeWidget() {

@@ -10,12 +10,12 @@ interface Activity {
 }
 
 const COINS = [
-  { name: 'BTC', icon: '/assets/Bitcoin.svg' },
-  { name: 'ETH', icon: '/assets/Ethereum.svg' },
-  { name: 'SOL', icon: '/assets/Solana.svg' },
-  { name: 'USDT', icon: '/assets/Tether.svg' },
-  { name: 'BNB', icon: '/assets/BinanceCoin.svg' },
-  { name: 'ADA', icon: '/assets/Cardano.svg' }
+  { name: 'BTC', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/btc.svg' },
+  { name: 'ETH', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/eth.svg' },
+  { name: 'SOL', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/sol.svg' },
+  { name: 'USDT', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/usdt.svg' },
+  { name: 'BNB', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/bnb.svg' },
+  { name: 'ADA', icon: 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/svg/color/ada.svg' }
 ];
 
 const ACTIONS = [
