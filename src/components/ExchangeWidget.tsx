@@ -17,7 +17,7 @@ const CRYPTO_OPTIONS: DropdownOption[] = [
   { value: 'ethereum', label: 'ETH', icon: '/assets/Ethereum.svg' },
   { value: 'tether', label: 'USDT', icon: '/assets/Tether.svg' },
   { value: 'binancecoin', label: 'BNB', icon: '/assets/BinanceCoin.svg' },
-  { value: 'solana', label: 'SOL' },
+  { value: 'solana', label: 'SOL', icon: '/assets/Solana.svg' },
   { value: 'ripple', label: 'XRP' },
   { value: 'usd-coin', label: 'USDC' },
   { value: 'cardano', label: 'ADA', icon: '/assets/Cardano.svg' },
