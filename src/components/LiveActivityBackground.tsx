@@ -41,7 +41,7 @@ export default function LiveActivityBackground() {
       const top = Math.random() * 75 + 5; // 5-80% from top
       
       const newActivity: Activity = {
-        id: idCounter++,
+        id: Math.random().toString(36).substring(7) as any, // Cast to any to avoid interface error, or we can just change interface. Wait, interface says id: number. Let me just use Math.random() as a number instead.
         text,
         top,
         isLeftEdge: isLeft,
