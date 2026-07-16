@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ExchangeWidget from './components/ExchangeWidget';
 import MarketTrends from './components/MarketTrends';
+import LearnCrypto from './components/LearnCrypto';
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
       <Hero />
       <ExchangeWidget />
       <MarketTrends />
+      <LearnCrypto />
     </div>
   );
 }
