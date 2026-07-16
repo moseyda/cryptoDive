@@ -18,7 +18,7 @@ const ARTICLES = [
 
 export default function LearnCrypto() {
   return (
-    <section className="w-full max-w-7xl mx-auto px-4 py-20 relative z-20">
+    <section className="w-full max-w-[1728px] mx-auto px-4 py-20 relative z-20">
       {/* Header */}
       <div className="flex flex-col items-center text-center mb-16">
         <h2 className="text-white text-[32px] md:text-[58px] font-medium leading-tight mb-6">

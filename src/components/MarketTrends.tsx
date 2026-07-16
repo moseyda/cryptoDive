@@ -12,7 +12,7 @@ export default function MarketTrends() {
   };
 
   return (
-    <section className="w-full max-w-7xl mx-auto px-4 py-20 relative z-20">
+    <section className="w-full max-w-[1728px] mx-auto px-4 py-20 relative z-20">
       <div className="flex flex-col items-center mb-16">
         <h2 className="text-[#00ffa0] text-[20px] md:text-[24px] font-medium mb-4">
           Trade Crypto
