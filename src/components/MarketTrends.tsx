@@ -116,8 +116,14 @@ export default function MarketTrends() {
 
       {/* Footer Action */}
       <div className="flex justify-center mt-12">
-        <button className="border border-[#00ffa0] bg-[#00ffa0]/10 text-[#00ffa0] text-[18px] md:text-[20px] font-semibold px-10 py-4 rounded-full hover:bg-[#00ffa0] hover:text-black transition-colors">
-          View Other Crypto
+        <button className="flex items-center gap-4 md:gap-8 opacity-50 hover:opacity-100 transition-opacity duration-300 group focus:outline-none">
+          <div className="w-[100px] md:w-[250px] h-[1px] bg-gradient-to-r from-transparent to-[#00ffa0]/50" />
+          
+          <span className="text-[#00ffa0] text-[16px] md:text-[18px] font-semibold group-hover:text-white transition-colors">
+            View Other Crypto
+          </span>
+
+          <div className="w-[100px] md:w-[250px] h-[1px] bg-gradient-to-l from-transparent to-[#00ffa0]/50" />
         </button>
       </div>
     </section>
