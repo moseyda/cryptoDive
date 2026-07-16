@@ -61,38 +61,75 @@ export default function FAQ() {
         </p>
       </div>
 
-      {/* Accordion Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
-        {FAQS.map((faq) => {
-          const isExpanded = expandedId === faq.id;
+      {/* Accordion Columns */}
+      <div className="flex flex-col md:flex-row gap-x-12">
+        {/* Left Column */}
+        <div className="flex-1 flex flex-col gap-y-6">
+          {FAQS.filter((_, i) => i % 2 === 0).map((faq) => {
+            const isExpanded = expandedId === faq.id;
 
-          return (
-            <div 
-              key={faq.id} 
-              className={`border-b ${isExpanded ? 'border-[#00ffa0]' : 'border-gray-700/50'} pb-6 transition-colors duration-300`}
-            >
-              <button
-                onClick={() => toggleFAQ(faq.id)}
-                className="w-full flex items-center justify-between py-4 text-left group focus:outline-none"
-              >
-                <span className={`text-[20px] md:text-[24px] font-medium transition-colors ${isExpanded ? 'text-[#00ffa0]' : 'text-white group-hover:text-[#00ffa0]'}`}>
-                  {faq.question}
-                </span>
-                <span className={`ml-6 flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full transition-colors ${isExpanded ? 'bg-[#00ffa0] text-black' : 'bg-[#00ffa0]/10 text-[#00ffa0] group-hover:bg-[#00ffa0]/20'}`}>
-                  <ChevronDown size={20} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
-                </span>
-              </button>
-              
+            return (
               <div 
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-96 opacity-100 mt-2' : 'max-h-0 opacity-0'}`}
+                key={faq.id} 
+                className={`border-b ${isExpanded ? 'border-[#00ffa0]' : 'border-gray-700/50'} pb-6 transition-colors duration-300`}
               >
-                <p className="text-white/60 text-[16px] md:text-[18px] leading-relaxed pr-10">
-                  {faq.answer}
-                </p>
+                <button
+                  onClick={() => toggleFAQ(faq.id)}
+                  className="w-full flex items-center justify-between py-4 text-left group focus:outline-none"
+                >
+                  <span className={`text-[20px] md:text-[24px] font-medium transition-colors ${isExpanded ? 'text-[#00ffa0]' : 'text-white group-hover:text-[#00ffa0]'}`}>
+                    {faq.question}
+                  </span>
+                  <span className={`ml-6 flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full transition-colors ${isExpanded ? 'bg-[#00ffa0] text-black' : 'bg-[#00ffa0]/10 text-[#00ffa0] group-hover:bg-[#00ffa0]/20'}`}>
+                    <ChevronDown size={20} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
+                  </span>
+                </button>
+                
+                <div 
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-96 opacity-100 mt-2' : 'max-h-0 opacity-0'}`}
+                >
+                  <p className="text-white/60 text-[16px] md:text-[18px] leading-relaxed pr-10">
+                    {faq.answer}
+                  </p>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
+
+        {/* Right Column */}
+        <div className="flex-1 flex flex-col gap-y-6 mt-6 md:mt-0">
+          {FAQS.filter((_, i) => i % 2 !== 0).map((faq) => {
+            const isExpanded = expandedId === faq.id;
+
+            return (
+              <div 
+                key={faq.id} 
+                className={`border-b ${isExpanded ? 'border-[#00ffa0]' : 'border-gray-700/50'} pb-6 transition-colors duration-300`}
+              >
+                <button
+                  onClick={() => toggleFAQ(faq.id)}
+                  className="w-full flex items-center justify-between py-4 text-left group focus:outline-none"
+                >
+                  <span className={`text-[20px] md:text-[24px] font-medium transition-colors ${isExpanded ? 'text-[#00ffa0]' : 'text-white group-hover:text-[#00ffa0]'}`}>
+                    {faq.question}
+                  </span>
+                  <span className={`ml-6 flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full transition-colors ${isExpanded ? 'bg-[#00ffa0] text-black' : 'bg-[#00ffa0]/10 text-[#00ffa0] group-hover:bg-[#00ffa0]/20'}`}>
+                    <ChevronDown size={20} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
+                  </span>
+                </button>
+                
+                <div 
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-96 opacity-100 mt-2' : 'max-h-0 opacity-0'}`}
+                >
+                  <p className="text-white/60 text-[16px] md:text-[18px] leading-relaxed pr-10">
+                    {faq.answer}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
       </div>
     </section>
