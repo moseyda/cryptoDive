@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Plus, Minus } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 const FAQS = [
   {
@@ -74,7 +74,7 @@ export default function FAQ() {
                   {faq.question}
                 </span>
                 <span className={`ml-6 flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full transition-colors ${isExpanded ? 'bg-[#00ffa0] text-black' : 'bg-[#00ffa0]/10 text-[#00ffa0] group-hover:bg-[#00ffa0]/20'}`}>
-                  {isExpanded ? <Minus size={20} /> : <Plus size={20} />}
+                  <ChevronDown size={20} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
                 </span>
               </button>
               
