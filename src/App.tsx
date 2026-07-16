@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import ExchangeWidget from './components/ExchangeWidget';
 import MarketTrends from './components/MarketTrends';
 import LearnCrypto from './components/LearnCrypto';
+import FAQ from './components/FAQ';
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <ExchangeWidget />
       <MarketTrends />
       <LearnCrypto />
+      <FAQ />
     </div>
   );
 }
