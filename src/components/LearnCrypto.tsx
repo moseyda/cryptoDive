@@ -52,16 +52,20 @@ export default function LearnCrypto() {
   }, [hasStarted, activeIndex]);
 
   return (
-    <section ref={sectionRef} className="w-full max-w-[1728px] mx-auto px-4 py-20 relative z-20">
-      <style>{`
-        @keyframes fillBar {
-          0% { width: 0%; }
-          100% { width: 100%; }
-        }
-        .animate-fill-bar {
-          animation: fillBar 3s linear forwards;
-        }
-      `}</style>
+    <section ref={sectionRef} className="w-full relative z-20 py-20">
+      <div className="w-full max-w-[1728px] mx-auto px-4 relative">
+        {/* Ambient Background Glow */}
+        <div className="absolute top-[50%] right-[-5%] md:right-[-10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-[#00ffa0]/10 rounded-full blur-[120px] md:blur-[180px] -z-10 pointer-events-none" />
+
+        <style>{`
+          @keyframes fillBar {
+            0% { width: 0%; }
+            100% { width: 100%; }
+          }
+          .animate-fill-bar {
+            animation: fillBar 3s linear forwards;
+          }
+        `}</style>
 
       {/* Header */}
       <div className="flex flex-col items-center text-center mb-16">
@@ -146,6 +150,7 @@ export default function LearnCrypto() {
             </button>
           </div>
         ))}
+      </div>
       </div>
     </section>
   );

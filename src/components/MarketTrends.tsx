@@ -12,15 +12,19 @@ export default function MarketTrends() {
   };
 
   return (
-    <section className="w-full max-w-[1728px] mx-auto px-4 py-20 relative z-20">
-      <div className="flex flex-col items-center mb-16">
-        <h2 className="text-[#00ffa0] text-[20px] md:text-[24px] font-medium mb-4">
-          Trade Crypto
-        </h2>
-        <h3 className="text-white text-[32px] md:text-[58px] font-medium text-center leading-tight">
-          Crypto Market Trade And Metrics
-        </h3>
-      </div>
+    <section className="w-full relative z-20 py-20">
+      <div className="w-full max-w-[1728px] mx-auto px-4 relative">
+        {/* Ambient Background Glow */}
+        <div className="absolute top-[40%] right-[-5%] md:right-[-10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-[#00ffa0]/10 rounded-full blur-[120px] md:blur-[180px] -z-10 pointer-events-none" />
+
+        <div className="flex flex-col items-center mb-16">
+          <h2 className="text-[#00ffa0] text-[20px] md:text-[24px] font-medium mb-4">
+            Trade Crypto
+          </h2>
+          <h3 className="text-white text-[32px] md:text-[58px] font-medium text-center leading-tight">
+            Crypto Market Trade And Metrics
+          </h3>
+        </div>
 
       {loading && trends.length === 0 && (
         <div className="text-center text-white/50 py-10">Loading market data...</div>
@@ -125,6 +129,7 @@ export default function MarketTrends() {
 
           <div className="w-[100px] md:w-[250px] h-[1px] bg-gradient-to-l from-transparent to-[#00ffa0]/50" />
         </button>
+      </div>
       </div>
     </section>
   );
