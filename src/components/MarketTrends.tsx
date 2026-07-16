@@ -12,7 +12,7 @@ export default function MarketTrends() {
   };
 
   return (
-    <section className="w-full relative z-20 py-20">
+    <section className="w-full relative z-20 py-20 mt-32 md:mt-40">
       <div className="w-full max-w-[1728px] mx-auto px-4 relative">
         {/* Ambient Background Glow */}
         <div className="absolute top-[40%] right-[-5%] md:right-[-10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-[#00ffa0]/10 rounded-full blur-[120px] md:blur-[180px] -z-10 pointer-events-none" />
