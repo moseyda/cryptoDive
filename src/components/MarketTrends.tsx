@@ -18,9 +18,6 @@ export default function MarketTrends() {
         <div className="absolute top-[40%] right-[-5%] md:right-[-10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-[#00ffa0]/10 rounded-full blur-[120px] md:blur-[180px] -z-10 pointer-events-none" />
 
         <div className="flex flex-col items-center mb-16">
-          <h2 className="text-[#00ffa0] text-[20px] md:text-[24px] font-medium mb-4">
-            Trade Crypto
-          </h2>
           <h3 className="text-white text-[32px] md:text-[58px] font-medium text-center leading-tight">
             Crypto Market Trade And Metrics
           </h3>
