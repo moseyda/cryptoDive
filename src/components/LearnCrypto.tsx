@@ -1,10 +1,10 @@
 import { BookOpen, Coins, TrendingUp, Briefcase } from 'lucide-react';
 
 const CATEGORIES = [
-  { id: 'learn', label: 'Learn Crypto', icon: BookOpen, active: true },
-  { id: 'earn', label: 'Learn Earn', icon: Coins, active: false },
-  { id: 'trade', label: 'How To Trade', icon: TrendingUp, active: false },
-  { id: 'portfolio', label: 'Build Portfolio', icon: Briefcase, active: false },
+  { id: 'learn', label: 'Learn Crypto', icon: BookOpen },
+  { id: 'earn', label: 'Learn Earn', icon: Coins },
+  { id: 'trade', label: 'How To Trade', icon: TrendingUp },
+  { id: 'portfolio', label: 'Build Portfolio', icon: Briefcase },
 ];
 
 const ARTICLES = [
@@ -36,16 +36,12 @@ export default function LearnCrypto() {
           return (
             <button
               key={cat.id}
-              className={`flex flex-col items-center justify-center p-8 rounded-[40px] md:rounded-[55px] transition-all group ${
-                cat.active 
-                  ? 'bg-[#00ffa0]/10 border border-[#00ffa0] shadow-[0_0_30px_rgba(0,255,160,0.15)]' 
-                  : 'bg-[#00ffa0]/5 border border-transparent hover:bg-[#00ffa0]/10'
-              }`}
+              className="flex flex-col items-center justify-center p-8 rounded-[40px] md:rounded-[55px] transition-all group bg-[#00ffa0]/5 border border-transparent hover:bg-[#00ffa0]/10 hover:border-[#00ffa0] hover:shadow-[0_0_30px_rgba(0,255,160,0.15)]"
             >
               <div className="w-[70px] md:w-[91px] h-[70px] md:h-[91px] rounded-[20px] bg-[#00ffa0]/15 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <Icon className="text-[#00ffa0] w-8 h-8 md:w-10 md:h-10" />
               </div>
-              <span className={`text-[18px] md:text-[24px] font-semibold ${cat.active ? 'text-[#00ffa0]' : 'text-white/80 group-hover:text-[#00ffa0]'}`}>
+              <span className="text-[18px] md:text-[24px] font-semibold text-white/80 group-hover:text-[#00ffa0]">
                 {cat.label}
               </span>
             </button>
