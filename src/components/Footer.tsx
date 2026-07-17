@@ -77,7 +77,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <p className="text-white/50 text-[16px]">
-            © Copyright 2024, all right reserve by cryptodive
+            © Copyright {new Date().getFullYear()}, all right reserve by cryptodive
           </p>
 
           <div className="flex items-center gap-4">
