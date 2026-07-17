@@ -96,7 +96,7 @@ export default function ExchangeWidget() {
   // (Left out for brevity, but easy to add if needed).
 
   return (
-    <div id="exchange-widget" className="relative z-20 w-full max-w-[1400px] mx-auto px-4 -mt-10 mb-20">
+    <div id="exchange-widget" className="relative z-20 w-full max-w-[1100px] mx-auto px-4 -mt-8 mb-16">
       <div className="bg-[#101428]/80 backdrop-blur-xl border border-gray-700/30 rounded-2xl p-4 md:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row items-center gap-4 md:gap-6 relative">
         
         {/* Spend Input Block */}
@@ -108,7 +108,7 @@ export default function ExchangeWidget() {
               placeholder="0.00"
               value={spendAmount}
               onChange={handleSpendChange}
-              className="bg-transparent text-white text-[24px] md:text-[32px] font-bold outline-none w-full placeholder-gray-600 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              className="bg-transparent text-white text-[20px] md:text-[24px] font-bold outline-none w-full placeholder-gray-600 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             />
           </div>
           
@@ -141,7 +141,7 @@ export default function ExchangeWidget() {
               placeholder="0.00"
               value={receiveAmount}
               onChange={handleReceiveChange}
-              className="bg-transparent text-[#00ffa0] text-[24px] md:text-[32px] font-bold outline-none w-full placeholder-gray-600/50 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              className="bg-transparent text-[#00ffa0] text-[20px] md:text-[24px] font-bold outline-none w-full placeholder-gray-600/50 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             />
           </div>
           
@@ -156,7 +156,7 @@ export default function ExchangeWidget() {
 
         {/* Action Button */}
         <button 
-          className="w-full md:w-auto bg-[#00ffa0] text-black text-[18px] font-semibold px-10 py-4 rounded-[7px] hover:bg-[#00e690] transition-transform transform hover:scale-105 active:scale-95 duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap shadow-[0_0_15px_rgba(0,255,160,0.3)] z-0"
+          className="w-full md:w-auto bg-[#00ffa0] text-black text-[16px] font-semibold px-8 py-3 rounded-[7px] hover:bg-[#00e690] transition-transform transform hover:scale-105 active:scale-95 duration-200 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap shadow-[0_0_15px_rgba(0,255,160,0.3)] z-0"
           disabled={loading || !rates || !spendAmount}
         >
           {loading ? 'Fetching...' : 'Buy Crypto'}

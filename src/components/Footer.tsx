@@ -6,21 +6,21 @@ export default function Footer() {
   const otherLinks = ['Start Trading', 'Earn Free Crypto', 'Crypto Wallet', 'Payment Option'];
 
   return (
-    <footer className="w-full relative z-20 mt-32 md:mt-40 bg-[#000625]">
-      <div className="w-full max-w-[1728px] mx-auto px-4 pb-10">
+    <footer className="w-full relative z-20 mt-20 md:mt-24 bg-[#000625]">
+      <div className="w-full max-w-[1350px] mx-auto px-4 pb-10">
 
         {/* Main Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
 
           {/* Quick Link */}
           <div className="flex flex-col">
-            <h4 className="text-white text-[24px] font-medium mb-6">Quick Link</h4>
+            <h4 className="text-white text-[18px] font-medium mb-4">Quick Link</h4>
             <div className="flex flex-col gap-4">
               {quickLinks.map((link) => (
                 <a
                   key={link}
                   href="#"
-                  className="text-white/60 text-[18px] hover:text-[#00ffa0] transition-colors duration-200"
+                  className="text-white/60 text-[14px] hover:text-[#00ffa0] transition-colors duration-200"
                 >
                   {link}
                 </a>
@@ -30,13 +30,13 @@ export default function Footer() {
 
           {/* Help */}
           <div className="flex flex-col">
-            <h4 className="text-white text-[24px] font-medium mb-6">Help</h4>
+            <h4 className="text-white text-[18px] font-medium mb-4">Help</h4>
             <div className="flex flex-col gap-4">
               {helpLinks.map((link) => (
                 <a
                   key={link}
                   href="#"
-                  className="text-white/60 text-[18px] hover:text-[#00ffa0] transition-colors duration-200"
+                  className="text-white/60 text-[14px] hover:text-[#00ffa0] transition-colors duration-200"
                 >
                   {link}
                 </a>
@@ -46,13 +46,13 @@ export default function Footer() {
 
           {/* Others */}
           <div className="flex flex-col">
-            <h4 className="text-white text-[24px] font-medium mb-6">Others</h4>
+            <h4 className="text-white text-[18px] font-medium mb-4">Others</h4>
             <div className="flex flex-col gap-4">
               {otherLinks.map((link) => (
                 <a
                   key={link}
                   href="#"
-                  className="text-white/60 text-[18px] hover:text-[#00ffa0] transition-colors duration-200"
+                  className="text-white/60 text-[14px] hover:text-[#00ffa0] transition-colors duration-200"
                 >
                   {link}
                 </a>
@@ -62,7 +62,7 @@ export default function Footer() {
 
           {/* Download App */}
           <div className="flex flex-col items-start gap-4 md:flex-col">
-            <h4 className="text-white text-[24px] font-medium mb-6">Download App</h4>
+            <h4 className="text-white text-[18px] font-medium mb-4">Download App</h4>
             <div className="flex flex-col gap-4">
               <GooglePlayButton size="lg" className="scale-110 md:scale-125 origin-left hover:ring-[#00ffa0]/50 transition-all duration-300 mb-2 md:mb-4" />
               <AppStoreButton size="lg" className="scale-110 md:scale-125 origin-left hover:ring-[#00ffa0]/50 transition-all duration-300" />
@@ -76,7 +76,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="text-white/50 text-[16px]">
+          <p className="text-white/50 text-[14px]">
             © Copyright {new Date().getFullYear()}, all right reserve by cryptodive
           </p>
 

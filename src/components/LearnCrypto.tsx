@@ -52,8 +52,8 @@ export default function LearnCrypto() {
   }, [hasStarted, activeIndex]);
 
   return (
-    <section ref={sectionRef} className="w-full relative z-20 py-20 mt-32 md:mt-40">
-      <div className="w-full max-w-[1728px] mx-auto px-4 relative">
+    <section ref={sectionRef} className="w-full relative z-20 py-16 mt-20 md:mt-24">
+      <div className="w-full max-w-[1350px] mx-auto px-4 relative">
         {/* Ambient Background Glow */}
         <div className="absolute top-[50%] right-[-5%] md:right-[-10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-[#00ffa0]/10 rounded-full blur-[120px] md:blur-[180px] -z-10 pointer-events-none" />
 
@@ -69,16 +69,16 @@ export default function LearnCrypto() {
 
       {/* Header */}
       <div className="flex flex-col items-center text-center mb-16">
-        <h2 className="text-white text-[32px] md:text-[58px] font-medium leading-tight mb-6">
+        <h2 className="text-white text-[28px] md:text-[44px] font-medium leading-tight mb-4">
           Let's Know How Crypto Works
         </h2>
-        <p className="text-white/75 text-[18px] md:text-[24px] max-w-4xl mx-auto">
+        <p className="text-white/75 text-[16px] md:text-[18px] max-w-3xl mx-auto">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
       </div>
 
       {/* Animated Progress Categories */}
-      <div className="flex flex-wrap md:flex-nowrap w-full gap-4 md:gap-8 mb-16">
+      <div className="flex flex-wrap md:flex-nowrap w-full gap-4 md:gap-6 mb-12">
         {CATEGORIES.map((cat, index) => {
           const Icon = cat.icon;
           const isActive = index === activeIndex;
@@ -88,12 +88,12 @@ export default function LearnCrypto() {
             <button
               key={cat.id}
               onClick={() => setActiveIndex(index)}
-              className="flex-1 min-w-[45%] md:min-w-0 flex flex-col items-start gap-4 focus:outline-none group p-4 rounded-2xl hover:bg-[#00ffa0]/5 transition-colors"
+              className="flex-1 min-w-[45%] md:min-w-0 flex flex-col items-start gap-4 focus:outline-none group p-3 rounded-2xl hover:bg-[#00ffa0]/5 transition-colors"
             >
               {/* Label & Icon */}
               <div className={`flex items-center gap-3 transition-colors duration-300 ${isActive || isPast ? 'text-[#00ffa0]' : 'text-white/50 group-hover:text-white'}`}>
                 <Icon className="w-6 h-6 md:w-8 md:h-8" />
-                <span className="text-[16px] md:text-[20px] font-semibold whitespace-nowrap">
+                <span className="text-[14px] md:text-[16px] font-semibold whitespace-nowrap">
                   {cat.label}
                 </span>
               </div>
@@ -121,13 +121,13 @@ export default function LearnCrypto() {
         {ARTICLES.map((article) => (
           <div 
             key={article.id}
-            className="group relative flex flex-col items-center text-center bg-[#00ffa0]/5 border border-[#00ffa0]/10 rounded-[35px] py-8 px-10 hover:bg-[#00ffa0]/10 transition-colors overflow-hidden"
+            className="group relative flex flex-col items-center text-center bg-[#00ffa0]/5 border border-[#00ffa0]/10 rounded-[35px] py-6 px-8 hover:bg-[#00ffa0]/10 transition-colors overflow-hidden"
           >
             <div className="relative z-10 flex flex-col items-center h-full w-full">
-              <h3 className="text-white text-[22px] md:text-[24px] font-semibold mb-3 leading-snug min-h-[56px] flex items-center shrink-0">
+              <h3 className="text-white text-[18px] md:text-[20px] font-semibold mb-2 leading-snug min-h-[48px] flex items-center shrink-0">
                 {article.title}
               </h3>
-              <p className="text-white/60 text-[18px] md:text-[20px] line-clamp-2">
+              <p className="text-white/60 text-[14px] md:text-[16px] line-clamp-2">
                 {article.desc}
               </p>
             </div>
@@ -142,7 +142,7 @@ export default function LearnCrypto() {
             <button className="absolute bottom-6 z-30 flex items-center justify-center gap-3 md:gap-4 transition-all duration-300 opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 w-full px-8 focus:outline-none">
               <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent to-[#00ffa0]/50" />
               
-              <span className="text-[#00ffa0] text-[16px] md:text-[18px] font-semibold hover:text-white transition-colors">
+              <span className="text-[#00ffa0] text-[14px] md:text-[16px] font-semibold hover:text-white transition-colors">
                 Learn More
               </span>
 
