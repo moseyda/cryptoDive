@@ -1,13 +1,15 @@
+import { Link } from 'react-router-dom';
+
 export default function Navbar() {
   return (
-    <nav className="flex items-center justify-between px-8 py-10 max-w-[1728px] mx-auto w-full">
+    <nav className="flex items-center justify-between px-8 py-10 max-w-[1728px] mx-auto w-full relative z-50">
       {/* Logo */}
-      <div className="flex items-center cursor-pointer">
+      <Link to="/" className="flex items-center cursor-pointer">
         <span className="text-[28px] font-extrabold leading-none tracking-tight">
           <span className="text-[#00ffa0]">Crypto</span>
           <span className="text-white">Dive</span>
         </span>
-      </div>
+      </Link>
 
       {/* Navigation Links */}
       <ul className="hidden lg:flex items-center gap-12 text-[24px] font-medium text-white">
@@ -20,9 +22,12 @@ export default function Navbar() {
 
       {/* Action Buttons */}
       <div className="flex items-center">
-        <button className="bg-[#00ffa0] text-black text-[24px] font-semibold px-10 py-2.5 rounded-[47px] hover:bg-[#00e690] transition-colors transform hover:scale-105 active:scale-95 duration-200">
+        <Link 
+          to="/signup" 
+          className="bg-[#00ffa0] text-black text-[24px] font-semibold px-10 py-2.5 rounded-[47px] hover:bg-[#00e690] transition-colors transform hover:scale-105 active:scale-95 duration-200 inline-block"
+        >
           Sign Up
-        </button>
+        </Link>
       </div>
     </nav>
   );

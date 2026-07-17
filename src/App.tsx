@@ -1,22 +1,17 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LandingPage from './pages/LandingPage';
+import SignUpPage from './pages/SignUpPage';
 import './index.css';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import ExchangeWidget from './components/ExchangeWidget';
-import MarketTrends from './components/MarketTrends';
-import LearnCrypto from './components/LearnCrypto';
-import FAQ from './components/FAQ';
-import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#000625] text-white font-sans selection:bg-[#00ffa0]/30 [zoom:80%] overflow-x-clip">
-      <Navbar />
-      <Hero />
-      <ExchangeWidget />
-      <MarketTrends />
-      <LearnCrypto />
-      <FAQ />
-      <Footer />
-    </div>
+    <Router>
+      <div className="min-h-screen bg-[#000625] text-white font-sans selection:bg-[#00ffa0]/30 [zoom:80%] overflow-x-clip">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
