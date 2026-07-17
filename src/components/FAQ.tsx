@@ -93,6 +93,28 @@ export default function FAQ() {
             })}
           </div>
         </div>
+
+      {/* Still Have Questions Card */}
+      <div className="mt-20 flex flex-col items-center text-center bg-[#00ffa0]/5 border border-[#00ffa0]/10 rounded-[35px] py-10 md:py-14 px-6 w-full max-w-4xl mx-auto hover:bg-[#00ffa0]/10 transition-colors duration-300">
+        {/* Overlapping Avatars */}
+        <div className="flex items-center justify-center mb-6">
+          <img src="/assets/percon1.png" alt="Team member" className="w-12 h-12 md:w-14 md:h-14 rounded-full border-[3px] border-[#0b0f20] object-cover relative z-10 shadow-lg" />
+          <img src="/assets/percon2.png" alt="Team member" className="w-14 h-14 md:w-16 md:h-16 rounded-full border-[3px] border-[#0b0f20] object-cover relative z-20 -ml-4 shadow-xl" />
+          <img src="/assets/percon3.png" alt="Team member" className="w-12 h-12 md:w-14 md:h-14 rounded-full border-[3px] border-[#0b0f20] object-cover relative z-10 -ml-4 shadow-lg" />
+        </div>
+        
+        <h3 className="text-white text-[24px] md:text-[30px] font-medium mb-3">
+          Still have questions?
+        </h3>
+        
+        <p className="text-white/60 text-[16px] md:text-[18px] mb-8 max-w-lg">
+          Can't find the answer you're looking for? Please chat to our friendly team.
+        </p>
+        
+        <button className="bg-[#00ffa0] text-[#0b0f20] text-[16px] md:text-[18px] font-semibold px-8 py-3 rounded-full hover:bg-[#00ffa0]/90 transition-transform transform hover:scale-105 active:scale-95 duration-200">
+          Get in touch
+        </button>
+      </div>
       </div>
     </section>
   );
