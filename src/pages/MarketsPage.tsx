@@ -45,7 +45,7 @@ export default function MarketsPage() {
     <div className="min-h-screen bg-[#000625] text-white font-sans overflow-x-clip flex flex-col">
       <Navbar />
 
-      <main className="flex-1 w-full max-w-[1500px] mx-auto px-4 py-12 relative z-10">
+      <main className="flex-1 w-full max-w-[1500px] mx-auto px-4 pt-28 pb-12 relative z-10">
         {/* Ambient Background Glow */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#00ffa0]/10 rounded-full blur-[150px] -z-10 pointer-events-none" />
         <div className="absolute top-[50%] left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[150px] -z-10 pointer-events-none" />
