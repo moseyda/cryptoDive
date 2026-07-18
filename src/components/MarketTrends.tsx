@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useMarketTrends } from '../hooks/useMarketTrends';
 import SparklineChart from './SparklineChart';
 
@@ -117,7 +118,7 @@ export default function MarketTrends() {
 
       {/* Footer Action */}
       <div className="flex justify-center mt-12">
-        <button className="flex items-center gap-4 md:gap-8 opacity-50 hover:opacity-100 transition-opacity duration-300 group focus:outline-none">
+        <Link to="/markets" className="flex items-center gap-4 md:gap-8 opacity-50 hover:opacity-100 transition-opacity duration-300 group focus:outline-none">
           <div className="w-[100px] md:w-[250px] h-[1px] bg-gradient-to-r from-transparent to-[#00ffa0]/50" />
           
           <span className="text-[#00ffa0] text-[14px] md:text-[16px] font-semibold group-hover:text-white transition-colors">
@@ -125,7 +126,7 @@ export default function MarketTrends() {
           </span>
 
           <div className="w-[100px] md:w-[250px] h-[1px] bg-gradient-to-l from-transparent to-[#00ffa0]/50" />
-        </button>
+        </Link>
       </div>
       </div>
     </section>
