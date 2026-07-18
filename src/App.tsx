@@ -3,6 +3,7 @@ import LandingPage from './pages/LandingPage';
 import SignUpPage from './pages/SignUpPage';
 import LoginPage from './pages/LoginPage';
 import MarketsPage from './pages/MarketsPage';
+import LearnPage from './pages/LearnPage';
 import './index.css';
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/markets" element={<MarketsPage />} />
+          <Route path="/learn" element={<LearnPage />} />
         </Routes>
       </div>
     </Router>
