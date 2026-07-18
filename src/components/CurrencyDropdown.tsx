@@ -47,7 +47,7 @@ export default function CurrencyDropdown({ options, value, onChange, align = 'ri
           setOpenDirection('down');
         }
       }
-      
+
       if (searchInputRef.current) {
         searchInputRef.current.focus();
       }
@@ -56,15 +56,15 @@ export default function CurrencyDropdown({ options, value, onChange, align = 'ri
     }
   }, [isOpen]);
 
-  const filteredOptions = options.filter(opt => 
-    opt.label.toLowerCase().includes(searchQuery.toLowerCase()) || 
+  const filteredOptions = options.filter(opt =>
+    opt.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
     opt.value.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
     <div className="relative" ref={dropdownRef}>
       {/* Dropdown Trigger */}
-      <div 
+      <div
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 cursor-pointer hover:bg-white/10 p-2 rounded-lg transition-colors border border-transparent hover:border-gray-700"
       >
@@ -75,10 +75,10 @@ export default function CurrencyDropdown({ options, value, onChange, align = 'ri
         {selectedOption.symbol && (
           <span className="text-gray-400 font-medium text-[16px] flex-shrink-0">{selectedOption.symbol}</span>
         )}
-        <svg 
-          className={`w-4 h-4 flex-shrink-0 text-white transition-transform duration-200 ml-1 ${isOpen ? 'rotate-180' : ''}`} 
-          fill="none" 
-          stroke="currentColor" 
+        <svg
+          className={`w-4 h-4 flex-shrink-0 text-white transition-transform duration-200 ml-1 ${isOpen ? 'rotate-180' : ''}`}
+          fill="none"
+          stroke="currentColor"
           viewBox="0 0 24 24"
         >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
@@ -87,7 +87,7 @@ export default function CurrencyDropdown({ options, value, onChange, align = 'ri
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div 
+        <div
           className={`absolute ${openDirection === 'up' ? 'bottom-full mb-2' : 'top-full mt-2'} w-56 bg-[#101428] border border-gray-700 rounded-xl shadow-2xl z-50 overflow-hidden ${align === 'right' ? 'right-0' : 'left-0'}`}
         >
           {/* Search Input */}
@@ -117,9 +117,8 @@ export default function CurrencyDropdown({ options, value, onChange, align = 'ri
                     onChange(option.value);
                     setIsOpen(false);
                   }}
-                  className={`flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-[#00ffa0]/10 transition-colors ${
-                    value === option.value ? 'bg-[#00ffa0]/5 text-[#00ffa0]' : 'text-white'
-                  }`}
+                  className={`flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-[#00ffa0]/10 transition-colors ${value === option.value ? 'bg-[#00ffa0]/5 text-[#00ffa0]' : 'text-white'
+                    }`}
                 >
                   {option.icon && (
                     <img src={option.icon} alt={option.label} className="w-5 h-5 rounded-full object-cover" />
