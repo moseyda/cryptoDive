@@ -24,10 +24,10 @@ export default function Hero() {
         
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row items-center gap-6 md:gap-10">
-          <button className="bg-[#00ffa0] text-black text-[16px] md:text-[18px] font-semibold px-8 py-3 rounded-[60px] hover:bg-[#00e690] transition-transform transform hover:scale-105 active:scale-95 duration-200">
+          <button className="bg-[#00ffa0] text-black text-[16px] md:text-[18px] font-semibold px-8 py-3 rounded-[8px] hover:bg-[#00e690] transition-transform transform hover:scale-105 active:scale-95 duration-200">
             Get Started
           </button>
-          <button className="border-2 border-[#00ffa0] text-white text-[16px] md:text-[18px] font-semibold px-8 py-3 rounded-[60px] hover:bg-[#00ffa0]/10 transition-transform transform hover:scale-105 active:scale-95 duration-200">
+          <button className="border-2 border-[#00ffa0] text-white text-[16px] md:text-[18px] font-semibold px-8 py-3 rounded-[8px] hover:bg-[#00ffa0]/10 transition-transform transform hover:scale-105 active:scale-95 duration-200">
             Start Trading
           </button>
         </div>

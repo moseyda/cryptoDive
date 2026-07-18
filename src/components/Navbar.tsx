@@ -30,7 +30,7 @@ export default function Navbar() {
         </Link>
         <Link 
           to="/signup" 
-          className="bg-[#00ffa0] text-black text-[16px] font-semibold px-6 py-2 rounded-[47px] hover:bg-[#00e690] transition-colors transform hover:scale-105 active:scale-95 duration-200 inline-block"
+          className="bg-[#00ffa0] text-black text-[16px] font-semibold px-6 py-2 rounded-[8px] hover:bg-[#00e690] transition-colors transform hover:scale-105 active:scale-95 duration-200 inline-block"
         >
           Sign Up
         </Link>

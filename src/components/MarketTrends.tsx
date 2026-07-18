@@ -105,7 +105,7 @@ export default function MarketTrends() {
                 <div className="w-full md:w-[15%] flex justify-end">
                   <button 
                     onClick={handleTradeClick}
-                    className="w-full md:w-auto bg-[#00ffa0]/10 text-[#00ffa0] text-[14px] md:text-[16px] font-semibold px-6 py-2 rounded-full hover:bg-[#00ffa0] hover:text-black transition-colors"
+                    className="w-full md:w-auto bg-[#00ffa0]/10 text-[#00ffa0] text-[14px] md:text-[16px] font-semibold px-6 py-2 rounded-[8px] hover:bg-[#00ffa0] hover:text-black transition-colors"
                   >
                     Trade
                   </button>

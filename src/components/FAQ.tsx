@@ -111,7 +111,7 @@ export default function FAQ() {
           Can't find the answer you're looking for? Please chat to our friendly team.
         </p>
         
-        <button className="bg-[#00ffa0] text-[#0b0f20] text-[14px] md:text-[16px] font-semibold px-6 py-2 rounded-full hover:bg-[#00ffa0]/90 transition-transform transform hover:scale-105 active:scale-95 duration-200">
+        <button className="bg-[#00ffa0] text-[#0b0f20] text-[14px] md:text-[16px] font-semibold px-6 py-2 rounded-[8px] hover:bg-[#00ffa0]/90 transition-transform transform hover:scale-105 active:scale-95 duration-200">
           Get in touch
         </button>
       </div>
