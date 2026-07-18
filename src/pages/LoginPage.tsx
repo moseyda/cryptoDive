@@ -2,7 +2,10 @@ import { Link } from 'react-router-dom';
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen w-full relative bg-[#000625] flex flex-col">
+    <div className="min-h-screen w-full relative bg-[#000625] flex flex-col overflow-hidden">
+      {/* Ambient Corner Glows */}
+      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-[300px] h-[300px] bg-[#00ffa0]/20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-[#00ffa0]/20 blur-[100px] rounded-full pointer-events-none z-0"></div>
 
       {/* Risk Warning Banner */}
       <div className="absolute top-0 left-0 right-0 w-full z-[60] bg-[#121629] border-b border-white/5 py-3 px-4 flex justify-center items-center overflow-hidden">
@@ -26,7 +29,7 @@ export default function LoginPage() {
       <div className="flex-1 w-full max-w-[1350px] mx-auto flex flex-col items-center justify-center relative z-10">
 
         <div className="w-full flex flex-col items-center justify-center px-6 pt-20 pb-8 mt-12 md:mt-0">
-          
+
           {/* Centered Auth Form */}
           <div className="w-full max-w-[400px] flex flex-col items-start flex-shrink-0 relative z-20">
 
@@ -37,8 +40,8 @@ export default function LoginPage() {
             {/* Input Field */}
             <div className="w-full flex flex-col mb-8">
               <label className="text-white/80 text-[14px] mb-2 font-medium">Email/Phone number</label>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 className="w-full h-[48px] bg-transparent border border-white/20 rounded-[8px] px-4 text-white outline-none focus:border-[#00ffa0] transition-colors"
               />
             </div>
@@ -92,7 +95,6 @@ export default function LoginPage() {
 
           </div>
         </div>
-
       </div>
 
       {/* Footer */}
