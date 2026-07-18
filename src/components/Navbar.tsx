@@ -11,7 +11,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#000625]/80 backdrop-blur-xl border-b border-white/5 shadow-lg' : 'bg-transparent'}`}>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#000625]/40 backdrop-blur-md border-b border-white/5">
       <nav className="flex items-center justify-between px-6 py-5 max-w-[1350px] mx-auto w-full">
         {/* Logo */}
         <Link to="/" className="flex items-center cursor-pointer">
@@ -32,14 +32,14 @@ export default function Navbar() {
 
         {/* Action Buttons */}
         <div className="flex items-center gap-6">
-          <Link 
-            to="/login" 
+          <Link
+            to="/login"
             className="text-white text-[16px] font-semibold hover:text-[#00ffa0] transition-colors"
           >
             Log In
           </Link>
-          <Link 
-            to="/signup" 
+          <Link
+            to="/signup"
             className="bg-[#00ffa0] text-black text-[16px] font-semibold px-6 py-2 rounded-[8px] hover:bg-[#00e690] transition-colors transform hover:scale-105 active:scale-95 duration-200 inline-block"
           >
             Sign Up
