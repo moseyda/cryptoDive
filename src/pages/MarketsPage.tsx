@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SparklineChart from '../components/SparklineChart';
 import { useAllMarkets } from '../hooks/useAllMarkets';
+import { useNews } from '../hooks/useNews';
 
 const CATEGORIES = [
   { id: 'all', label: 'All Crypto' },
@@ -20,7 +21,8 @@ export default function MarketsPage() {
   // Map local categories (gainers/losers) to 'all' for the API
   const apiCategory = ['all', 'gainers', 'losers'].includes(activeCategory) ? 'all' : activeCategory;
   
-  const { coins, loading, error } = useAllMarkets(apiCategory);
+  const { coins, loading: coinsLoading, error: coinsError } = useAllMarkets(apiCategory);
+  const { news, loading: newsLoading, error: newsError } = useNews();
 
   // Apply client-side filters and sorts
   let displayCoins = [...coins];
@@ -43,14 +45,15 @@ export default function MarketsPage() {
     <div className="min-h-screen bg-[#000625] text-white font-sans overflow-x-clip flex flex-col">
       <Navbar />
 
-      <main className="flex-1 w-full max-w-[1350px] mx-auto px-4 py-12 relative z-10">
+      <main className="flex-1 w-full max-w-[1500px] mx-auto px-4 py-12 relative z-10">
         {/* Ambient Background Glow */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#00ffa0]/10 rounded-full blur-[150px] -z-10 pointer-events-none" />
+        <div className="absolute top-[50%] left-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[150px] -z-10 pointer-events-none" />
 
         <div className="mb-8">
           <h1 className="text-[32px] md:text-[44px] font-bold mb-4">Markets Overview</h1>
           <p className="text-white/60 text-[16px] md:text-[18px] max-w-2xl">
-            Explore the top cryptocurrencies. Filter by category, track daily gainers, and find specific assets.
+            Explore the top cryptocurrencies. Filter by category, track daily gainers, and catch up on the latest financial news.
           </p>
         </div>
 
@@ -88,115 +91,193 @@ export default function MarketsPage() {
           </div>
         </div>
 
-        {/* Phase 2: Enhanced Table */}
-        <div className="w-full bg-[#101428]/40 border border-gray-800/50 rounded-3xl p-4 md:p-6 backdrop-blur-sm">
-          {loading && displayCoins.length === 0 && (
-            <div className="flex flex-col items-center justify-center py-20">
-              <div className="w-10 h-10 border-4 border-[#00ffa0]/20 border-t-[#00ffa0] rounded-full animate-spin mb-4"></div>
-              <div className="text-white/50 text-[16px]">Loading market data...</div>
-            </div>
-          )}
+        {/* Phase 3: Split Grid Layout */}
+        <div className="flex flex-col xl:flex-row gap-8 items-start">
+          
+          {/* Left Column: Crypto Table */}
+          <div className="w-full xl:w-[70%] bg-[#101428]/40 border border-gray-800/50 rounded-3xl p-4 md:p-6 backdrop-blur-sm">
+            <h2 className="text-[20px] font-bold mb-6 text-white flex items-center gap-2">
+              <svg className="w-5 h-5 text-[#00ffa0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+              Live Market Data
+            </h2>
 
-          {error && displayCoins.length === 0 && !loading && (
-            <div className="text-center text-red-500 py-20 text-[18px]">Error: {error}</div>
-          )}
-
-          {displayCoins.length === 0 && !loading && !error && (
-            <div className="text-center text-white/50 py-20 text-[18px]">No coins found for "{searchQuery}".</div>
-          )}
-
-          {displayCoins.length > 0 && (
-            <div className="flex flex-col w-full">
-              {/* Table Header */}
-              <div className="hidden md:flex items-center px-4 py-4 text-white/50 text-[14px] md:text-[16px] font-medium border-b border-gray-700/50">
-                <div className="w-[8%]">#</div>
-                <div className="w-[30%]">Name</div>
-                <div className="w-[15%] text-right">Price</div>
-                <div className="w-[15%] text-right">Change (24h)</div>
-                <div className="w-[20%] text-right">Market Cap</div>
-                <div className="w-[12%] text-center">Chart (7d)</div>
+            {coinsLoading && displayCoins.length === 0 && (
+              <div className="flex flex-col items-center justify-center py-20">
+                <div className="w-10 h-10 border-4 border-[#00ffa0]/20 border-t-[#00ffa0] rounded-full animate-spin mb-4"></div>
+                <div className="text-white/50 text-[16px]">Loading market data...</div>
               </div>
+            )}
 
-              {/* Coin Rows */}
-              <div className="flex flex-col gap-2 mt-4">
-                {displayCoins.map((coin, index) => {
-                  const isPositive = coin.price_change_percentage_24h >= 0;
-                  const changeColor = isPositive ? 'text-[#00ffa0]' : 'text-[#c30000]';
-                  const chartColor = isPositive ? '#00ffa0' : '#c30000';
-                  const formattedPrice = new Intl.NumberFormat('en-US', {
-                    style: 'currency',
-                    currency: 'USD',
-                  }).format(coin.current_price);
-                  
-                  const formattedChange = (isPositive ? '+' : '') + coin.price_change_percentage_24h.toFixed(2) + '%';
-                  
-                  const formattedMarketCap = new Intl.NumberFormat('en-US', {
-                    style: 'currency',
-                    currency: 'USD',
-                    maximumFractionDigits: 0
-                  }).format(coin.market_cap || 0);
+            {coinsError && displayCoins.length === 0 && !coinsLoading && (
+              <div className="text-center text-red-500 py-20 text-[18px]">Error: {coinsError}</div>
+            )}
 
-                  return (
-                    <div 
-                      key={coin.id}
-                      className="flex flex-col md:flex-row items-start md:items-center justify-between p-4 bg-transparent hover:bg-white/5 rounded-xl transition-colors group cursor-pointer border border-transparent hover:border-white/10"
-                    >
-                      {/* Rank */}
-                      <div className="hidden md:block w-[8%] text-white/40 font-medium">
-                        {index + 1}
-                      </div>
+            {displayCoins.length === 0 && !coinsLoading && !coinsError && (
+              <div className="text-center text-white/50 py-20 text-[18px]">No coins found for "{searchQuery}".</div>
+            )}
 
-                      {/* Coin Info */}
-                      <div className="flex items-center gap-4 w-full md:w-[30%] mb-4 md:mb-0">
-                        <img src={coin.image} alt={coin.name} className="w-8 h-8 rounded-full" />
-                        <div className="flex flex-col">
-                          <span className="text-white text-[16px] font-semibold">{coin.name}</span>
-                          <span className="text-white/50 text-[14px] uppercase font-medium">{coin.symbol}</span>
+            {displayCoins.length > 0 && (
+              <div className="flex flex-col w-full">
+                {/* Table Header */}
+                <div className="hidden md:flex items-center px-4 py-4 text-white/50 text-[14px] md:text-[16px] font-medium border-b border-gray-700/50">
+                  <div className="w-[8%]">#</div>
+                  <div className="w-[28%]">Name</div>
+                  <div className="w-[15%] text-right">Price</div>
+                  <div className="w-[15%] text-right">Change</div>
+                  <div className="w-[20%] text-right">Market Cap</div>
+                  <div className="w-[14%] text-center">Chart (7d)</div>
+                </div>
+
+                {/* Coin Rows */}
+                <div className="flex flex-col gap-2 mt-4">
+                  {displayCoins.map((coin, index) => {
+                    const isPositive = coin.price_change_percentage_24h >= 0;
+                    const changeColor = isPositive ? 'text-[#00ffa0]' : 'text-[#c30000]';
+                    const chartColor = isPositive ? '#00ffa0' : '#c30000';
+                    const formattedPrice = new Intl.NumberFormat('en-US', {
+                      style: 'currency',
+                      currency: 'USD',
+                    }).format(coin.current_price);
+                    
+                    const formattedChange = (isPositive ? '+' : '') + coin.price_change_percentage_24h.toFixed(2) + '%';
+                    
+                    const formattedMarketCap = new Intl.NumberFormat('en-US', {
+                      style: 'currency',
+                      currency: 'USD',
+                      notation: 'compact',
+                      maximumFractionDigits: 2
+                    }).format(coin.market_cap || 0);
+
+                    return (
+                      <div 
+                        key={coin.id}
+                        className="flex flex-col md:flex-row items-start md:items-center justify-between p-4 bg-transparent hover:bg-white/5 rounded-xl transition-colors group cursor-pointer border border-transparent hover:border-white/10"
+                      >
+                        {/* Rank */}
+                        <div className="hidden md:block w-[8%] text-white/40 font-medium">
+                          {index + 1}
+                        </div>
+
+                        {/* Coin Info */}
+                        <div className="flex items-center gap-4 w-full md:w-[28%] mb-4 md:mb-0">
+                          <img src={coin.image} alt={coin.name} className="w-8 h-8 rounded-full" />
+                          <div className="flex flex-col">
+                            <span className="text-white text-[16px] font-semibold truncate max-w-[150px]">{coin.name}</span>
+                            <span className="text-white/50 text-[14px] uppercase font-medium">{coin.symbol}</span>
+                          </div>
+                        </div>
+
+                        {/* Mobile Labels */}
+                        <div className="flex md:hidden w-full justify-between mb-2">
+                          <span className="text-white/50">Price</span>
+                          <span className="text-white font-semibold text-[16px]">{formattedPrice}</span>
+                        </div>
+
+                        {/* Price (Desktop) */}
+                        <div className="hidden md:block w-[15%] text-right text-white text-[16px] font-semibold">
+                          {formattedPrice}
+                        </div>
+
+                        {/* Mobile Labels */}
+                        <div className="flex md:hidden w-full justify-between mb-2">
+                          <span className="text-white/50">Change</span>
+                          <span className={changeColor + " font-semibold text-[16px]"}>{formattedChange}</span>
+                        </div>
+
+                        {/* Change % (Desktop) */}
+                        <div className={`hidden md:block w-[15%] text-right text-[16px] font-semibold ${changeColor}`}>
+                          {formattedChange}
+                        </div>
+
+                        {/* Market Cap (Desktop Only) */}
+                        <div className="hidden md:block w-[20%] text-right text-white text-[16px] font-medium">
+                          {formattedMarketCap}
+                        </div>
+
+                        {/* Chart */}
+                        <div className="w-full md:w-[14%] flex justify-center mt-4 md:mt-0">
+                          <SparklineChart 
+                            data={coin.sparkline_in_7d?.price || []} 
+                            color={chartColor} 
+                            width={80} 
+                            height={30} 
+                          />
                         </div>
                       </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
 
-                      {/* Mobile Labels */}
-                      <div className="flex md:hidden w-full justify-between mb-2">
-                        <span className="text-white/50">Price</span>
-                        <span className="text-white font-semibold text-[16px]">{formattedPrice}</span>
-                      </div>
+          {/* Right Column: News Feed */}
+          <div className="w-full xl:w-[30%] bg-[#101428]/40 border border-gray-800/50 rounded-3xl p-4 md:p-6 backdrop-blur-sm sticky top-24">
+            <h2 className="text-[20px] font-bold mb-6 text-white flex items-center gap-2">
+              <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path>
+              </svg>
+              Latest Financial News
+            </h2>
 
-                      {/* Price (Desktop) */}
-                      <div className="hidden md:block w-[15%] text-right text-white text-[16px] font-semibold">
-                        {formattedPrice}
-                      </div>
+            {newsLoading && news.length === 0 && (
+              <div className="flex flex-col items-center justify-center py-20">
+                <div className="w-8 h-8 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin mb-4"></div>
+                <div className="text-white/50 text-[14px]">Fetching latest headlines...</div>
+              </div>
+            )}
 
-                      {/* Mobile Labels */}
-                      <div className="flex md:hidden w-full justify-between mb-2">
-                        <span className="text-white/50">Change</span>
-                        <span className={changeColor + " font-semibold text-[16px]"}>{formattedChange}</span>
-                      </div>
+            {newsError && news.length === 0 && !newsLoading && (
+              <div className="text-center text-red-500 py-10 text-[14px]">Error: {newsError}</div>
+            )}
 
-                      {/* Change % (Desktop) */}
-                      <div className={`hidden md:block w-[15%] text-right text-[16px] font-semibold ${changeColor}`}>
-                        {formattedChange}
+            {news.length > 0 && (
+              <div className="flex flex-col gap-4 overflow-y-auto custom-scrollbar max-h-[800px] pr-2">
+                {news.map((article) => {
+                  const date = new Date(article.published_on * 1000);
+                  const timeString = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                  
+                  return (
+                    <a 
+                      key={article.id} 
+                      href={article.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex flex-col gap-3 p-4 bg-[#000625]/50 border border-gray-800 rounded-2xl hover:border-blue-500/50 hover:bg-[#000625] transition-all group"
+                    >
+                      <div className="flex items-center justify-between text-[12px] text-white/50 font-medium">
+                        <div className="flex items-center gap-2">
+                          <img src={article.source_info.img} alt={article.source_info.name} className="w-4 h-4 rounded-full bg-white" />
+                          <span className="text-blue-400">{article.source_info.name}</span>
+                        </div>
+                        <span>{timeString}</span>
                       </div>
-
-                      {/* Market Cap (Desktop Only) */}
-                      <div className="hidden md:block w-[20%] text-right text-white text-[16px] font-medium">
-                        {formattedMarketCap}
+                      
+                      <h3 className="text-white text-[15px] font-semibold leading-snug group-hover:text-blue-400 transition-colors line-clamp-2">
+                        {article.title}
+                      </h3>
+                      
+                      <div className="flex gap-3">
+                        <p className="text-white/60 text-[13px] line-clamp-3 flex-1">
+                          {article.body}
+                        </p>
+                        {article.imageurl && (
+                          <img 
+                            src={article.imageurl} 
+                            alt="News thumbnail" 
+                            className="w-20 h-20 object-cover rounded-xl flex-shrink-0"
+                          />
+                        )}
                       </div>
-
-                      {/* Chart */}
-                      <div className="w-full md:w-[12%] flex justify-center mt-4 md:mt-0">
-                        <SparklineChart 
-                          data={coin.sparkline_in_7d?.price || []} 
-                          color={chartColor} 
-                          width={80} 
-                          height={30} 
-                        />
-                      </div>
-                    </div>
+                    </a>
                   );
                 })}
               </div>
-            </div>
-          )}
+            )}
+          </div>
+
         </div>
       </main>
 
