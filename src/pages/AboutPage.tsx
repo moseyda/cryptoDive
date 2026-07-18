@@ -25,10 +25,10 @@ export default function AboutPage() {
           <p className="text-white/70 text-[16px] md:text-[18px] leading-relaxed mb-8">
             Cryptocurrency represents the future of global finance, and we believe it should be accessible to everyone, everywhere. By leveraging cutting-edge blockchain technology and maintaining an unyielding commitment to security, we are paving the way for a decentralized financial ecosystem.
           </p>
-          
+
           <h2 className="text-[24px] md:text-[32px] font-bold text-white mb-6">Our Team</h2>
           <p className="text-white/70 text-[16px] md:text-[18px] leading-relaxed">
-            Built by a group of passionate engineers, designers, and crypto enthusiasts, CryptoDive combines years of experience in traditional finance with deep expertise in web3 technologies. We constantly iterate and innovate to provide you with the best tools to manage, trade, and learn about your digital assets.
+            Built by a motivated software engineer, and crypto enthusiast, CryptoDive combines years of experience in traditional finance with notable skills in web3 technologies. I constantly iterate and innovate to provide you with the best tools to manage, trade, and learn about your digital assets.
           </p>
         </div>
       </main>
