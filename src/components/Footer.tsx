@@ -63,9 +63,9 @@ export default function Footer() {
           {/* Download App */}
           <div className="flex flex-col items-start gap-4 md:flex-col">
             <h4 className="text-white text-[18px] font-medium mb-4">Download App</h4>
-            <div className="flex flex-col gap-4">
-              <GooglePlayButton size="lg" className="scale-110 md:scale-125 origin-left hover:ring-[#00ffa0]/50 transition-all duration-300 mb-2 md:mb-4" />
-              <AppStoreButton size="lg" className="scale-110 md:scale-125 origin-left hover:ring-[#00ffa0]/50 transition-all duration-300" />
+            <div className="flex flex-col gap-2">
+              <GooglePlayButton size="md" className="scale-100 md:scale-110 origin-left hover:ring-[#00ffa0]/50 transition-all duration-300 mb-2 md:mb-4" />
+              <AppStoreButton size="md" className="scale-100 md:scale-110 origin-left hover:ring-[#00ffa0]/50 transition-all duration-300" />
             </div>
           </div>
 
