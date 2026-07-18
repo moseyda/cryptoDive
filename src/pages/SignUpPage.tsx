@@ -39,7 +39,7 @@ export default function SignUpPage() {
             </h1>
 
             {/* Primary CTA */}
-            <button className="w-full h-[48px] bg-[#00ffa0] text-[#000625] text-[16px] font-semibold rounded-[8px] mb-8 flex items-center justify-center relative hover:bg-[#00ffa0]/90 transition-all duration-300">
+            <button className="w-full h-[48px] bg-[#00ffa0] text-[#000625] text-[16px] font-semibold rounded-[8px] mb-8 flex items-center justify-center relative hover:bg-[#00ffa0]/90 transition-all duration-300 cursor-pointer">
               <div className="absolute left-6 flex items-center justify-center">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" />
@@ -56,7 +56,7 @@ export default function SignUpPage() {
             </div>
 
             {/* Secondary Buttons */}
-            <button className="w-full h-[48px] bg-[#f2f2f2] text-[#1f1f1f] text-[16px] font-medium rounded-[8px] mb-5 flex items-center justify-center relative hover:bg-[#e6e6e6] transition-colors duration-200">
+            <button className="w-full h-[48px] bg-[#f2f2f2] text-[#1f1f1f] text-[16px] font-medium rounded-[8px] mb-5 flex items-center justify-center relative hover:bg-[#e6e6e6] transition-colors duration-200 cursor-pointer">
               <div className="absolute left-6 flex items-center justify-center w-[24px] h-[24px]">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" style={{ display: 'block', width: '24px', height: '24px' }}>
                   <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
@@ -72,7 +72,7 @@ export default function SignUpPage() {
             </button>
 
             {/* Official Apple Custom Button */}
-            <button className="w-full h-[48px] bg-white text-black text-[16px] font-medium rounded-[8px] mb-10 flex items-center justify-center relative hover:bg-gray-100 transition-colors duration-200">
+            <button className="w-full h-[48px] bg-white text-black text-[16px] font-medium rounded-[8px] mb-10 flex items-center justify-center relative hover:bg-gray-100 transition-colors duration-200 cursor-pointer">
               <div className="absolute left-6 flex items-center justify-center w-[24px] h-[24px]">
                 <svg viewBox="0 0 384 512" style={{ display: 'block', width: '24px', height: '24px' }}>
                   <path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" />
