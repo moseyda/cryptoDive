@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { BookOpen, Coins, TrendingUp, Briefcase } from 'lucide-react';
 
 const CATEGORIES = [
@@ -9,12 +10,12 @@ const CATEGORIES = [
 ];
 
 const ARTICLES = [
-  { id: 1, title: 'What is cryptocurrency?', desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit - Time data' },
-  { id: 2, title: 'What is a blockchain?', desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit - Time data' },
-  { id: 3, title: 'What is a cryptocurrency wallet?', desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit - Time data' },
-  { id: 4, title: 'How do I start investing in cryptocurrency?', desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit - Time data' },
-  { id: 5, title: 'How do I keep my cryptocurrency secure?', desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit - Time data' },
-  { id: 6, title: 'What are the risks of crypto?', desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit - Time data' },
+  { id: 1, anchor: 'what-is-crypto', title: 'What is cryptocurrency?', desc: 'Digital money using cryptography to secure transactions on decentralized networks, unlike traditional banks.' },
+  { id: 2, anchor: 'what-is-blockchain', title: 'What is a blockchain?', desc: 'A digital ledger that securely records transactions across a decentralized network of computers.' },
+  { id: 3, anchor: 'what-is-wallet', title: 'What is a cryptocurrency wallet?', desc: 'A tool to store private keys that prove ownership of your digital assets.' },
+  { id: 4, anchor: 'how-to-invest', title: 'How do I start investing in cryptocurrency?', desc: 'Learn the basics, use reputable exchanges, and start with amounts you can afford.' },
+  { id: 5, anchor: 'how-to-secure', title: 'How do I keep my cryptocurrency secure?', desc: 'Use strong passwords, 2FA, and store private keys safely offline in hardware wallets.' },
+  { id: 6, anchor: 'crypto-risks', title: 'What are the risks of crypto?', desc: 'High volatility, scams, irreversible transactions, and changing regulations mean you should invest carefully.' },
 ];
 
 export default function LearnCrypto() {
@@ -139,7 +140,10 @@ export default function LearnCrypto() {
             </div>
 
             {/* Hover Button */}
-            <button className="absolute bottom-6 z-30 flex items-center justify-center gap-3 md:gap-4 transition-all duration-300 opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 w-full px-8 focus:outline-none">
+            <Link 
+              to={`/learn#${article.anchor}`}
+              className="absolute bottom-6 z-30 flex items-center justify-center gap-3 md:gap-4 transition-all duration-300 opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0 w-full px-8 focus:outline-none cursor-pointer"
+            >
               <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent to-[#00ffa0]/50" />
               
               <span className="text-[#00ffa0] text-[14px] md:text-[16px] font-semibold hover:text-white transition-colors">
@@ -147,7 +151,7 @@ export default function LearnCrypto() {
               </span>
 
               <div className="flex-1 h-[1px] bg-gradient-to-l from-transparent to-[#00ffa0]/50" />
-            </button>
+            </Link>
           </div>
         ))}
       </div>
