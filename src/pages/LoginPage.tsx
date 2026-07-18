@@ -1,10 +1,6 @@
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
 
-export default function SignUpPage() {
-
-
-
+export default function LoginPage() {
   return (
     <div className="min-h-screen w-full relative bg-[#000625] flex flex-col">
 
@@ -29,23 +25,27 @@ export default function SignUpPage() {
       {/* Central Wrapper */}
       <div className="flex-1 w-full max-w-[1350px] mx-auto flex flex-col items-center justify-center relative z-10">
 
-        <div className="w-full flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-16 px-6 lg:px-12 pt-20 pb-8">
-
-          {/* Left Side: Auth Form */}
+        <div className="w-full flex flex-col items-center justify-center px-6 pt-20 pb-8 mt-12 md:mt-0">
+          
+          {/* Centered Auth Form */}
           <div className="w-full max-w-[400px] flex flex-col items-start flex-shrink-0 relative z-20">
 
-            <h1 className="text-white text-[24px] lg:text-[32px] font-bold mb-8 whitespace-nowrap">
-              Welcome to CryptoDive!
+            <h1 className="text-white text-[28px] lg:text-[32px] font-semibold mb-8 whitespace-nowrap">
+              Log In
             </h1>
 
+            {/* Input Field */}
+            <div className="w-full flex flex-col mb-8">
+              <label className="text-white/80 text-[14px] mb-2 font-medium">Email/Phone number</label>
+              <input 
+                type="text" 
+                className="w-full h-[48px] bg-transparent border border-white/20 rounded-[8px] px-4 text-white outline-none focus:border-[#00ffa0] transition-colors"
+              />
+            </div>
+
             {/* Primary CTA */}
-            <button className="w-full h-[48px] bg-[#00ffa0] text-[#000625] text-[16px] font-semibold rounded-[8px] mb-8 flex items-center justify-center relative hover:bg-[#00ffa0]/90 transition-all duration-300 cursor-pointer">
-              <div className="absolute left-6 flex items-center justify-center">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" />
-                </svg>
-              </div>
-              <span>Sign Up With Email or Phone</span>
+            <button className="w-full h-[48px] bg-[#00ffa0] text-[#000625] text-[16px] font-semibold rounded-[8px] mb-8 flex items-center justify-center hover:bg-[#00ffa0]/90 transition-all duration-300 cursor-pointer">
+              Next
             </button>
 
             {/* Divider */}
@@ -84,26 +84,13 @@ export default function SignUpPage() {
             </button>
 
             {/* Links */}
-            <div className="w-full flex justify-center items-center mt-2">
-              <span className="text-white/60 text-[16px] text-center">
-                Already have an account? <Link to="/login" className="text-[#00ffa0] font-medium hover:underline">Log In</Link>
-              </span>
+            <div className="w-full flex justify-start items-center mt-2">
+              <Link to="/signup" className="text-[#00ffa0] text-[16px] font-semibold hover:underline">
+                Create a CryptoDive Account
+              </Link>
             </div>
 
           </div>
-
-          {/* Right Side: Promo Visuals */}
-          <div className="w-full max-w-[480px] relative flex justify-center items-center mt-12 lg:mt-0">
-            {/* Glow behind image */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#00ffa0]/20 blur-[100px] rounded-full pointer-events-none z-0"></div>
-
-            <img
-              src="/assets/phoneapp.png"
-              alt="CryptoDive App"
-              className="w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,255,160,0.15)] relative z-10"
-            />
-          </div>
-
         </div>
 
       </div>

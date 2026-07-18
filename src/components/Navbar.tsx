@@ -21,7 +21,13 @@ export default function Navbar() {
       </ul>
 
       {/* Action Buttons */}
-      <div className="flex items-center">
+      <div className="flex items-center gap-6">
+        <Link 
+          to="/login" 
+          className="text-white text-[16px] font-semibold hover:text-[#00ffa0] transition-colors"
+        >
+          Log In
+        </Link>
         <Link 
           to="/signup" 
           className="bg-[#00ffa0] text-black text-[16px] font-semibold px-6 py-2 rounded-[47px] hover:bg-[#00e690] transition-colors transform hover:scale-105 active:scale-95 duration-200 inline-block"
