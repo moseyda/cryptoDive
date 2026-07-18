@@ -1,9 +1,25 @@
+import { Link } from 'react-router-dom';
 import { GooglePlayButton, AppStoreButton } from './base/buttons/app-store-buttons-outline';
 
 export default function Footer() {
-  const quickLinks = ['About Us', 'Feature', 'Career', 'Contact Us'];
-  const helpLinks = ['Customer Support', 'Terms', 'Privacy', 'FAQs'];
-  const otherLinks = ['Start Trading', 'Earn Free Crypto', 'Crypto Wallet', 'Payment Option'];
+  const quickLinks = [
+    { label: 'About Us', href: '/about' }, 
+    { label: 'Feature', href: '#' }, 
+    { label: 'Career', href: '#' }, 
+    { label: 'Contact Us', href: '#' }
+  ];
+  const helpLinks = [
+    { label: 'Customer Support', href: '#' }, 
+    { label: 'Terms', href: '#' }, 
+    { label: 'Privacy', href: '#' }, 
+    { label: 'FAQs', href: '#' }
+  ];
+  const otherLinks = [
+    { label: 'Start Trading', href: '#' }, 
+    { label: 'Earn Free Crypto', href: '#' }, 
+    { label: 'Crypto Wallet', href: '#' }, 
+    { label: 'Payment Option', href: '#' }
+  ];
 
   return (
     <footer className="w-full relative z-20 mt-20 md:mt-24 bg-[#000625]">
@@ -17,13 +33,13 @@ export default function Footer() {
             <h4 className="text-white text-[18px] font-medium mb-4">Quick Link</h4>
             <div className="flex flex-col gap-4">
               {quickLinks.map((link) => (
-                <a
-                  key={link}
-                  href="#"
+                <Link
+                  key={link.label}
+                  to={link.href}
                   className="text-white/60 text-[14px] hover:text-[#00ffa0] transition-colors duration-200"
                 >
-                  {link}
-                </a>
+                  {link.label}
+                </Link>
               ))}
             </div>
           </div>
@@ -33,13 +49,13 @@ export default function Footer() {
             <h4 className="text-white text-[18px] font-medium mb-4">Help</h4>
             <div className="flex flex-col gap-4">
               {helpLinks.map((link) => (
-                <a
-                  key={link}
-                  href="#"
+                <Link
+                  key={link.label}
+                  to={link.href}
                   className="text-white/60 text-[14px] hover:text-[#00ffa0] transition-colors duration-200"
                 >
-                  {link}
-                </a>
+                  {link.label}
+                </Link>
               ))}
             </div>
           </div>
@@ -49,13 +65,13 @@ export default function Footer() {
             <h4 className="text-white text-[18px] font-medium mb-4">Others</h4>
             <div className="flex flex-col gap-4">
               {otherLinks.map((link) => (
-                <a
-                  key={link}
-                  href="#"
+                <Link
+                  key={link.label}
+                  to={link.href}
                   className="text-white/60 text-[14px] hover:text-[#00ffa0] transition-colors duration-200"
                 >
-                  {link}
-                </a>
+                  {link.label}
+                </Link>
               ))}
             </div>
           </div>
