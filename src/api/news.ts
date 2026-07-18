@@ -14,7 +14,7 @@ export interface NewsArticle {
   };
 }
 
-const NEWS_API_URL = 'https://min-api.cryptocompare.com/data/v2/news/?lang=EN';
+const NEWS_API_URL = '/api/cryptocompare/news/?lang=EN';
 
 export const fetchCryptoNews = async (): Promise<NewsArticle[]> => {
   const response = await fetch(NEWS_API_URL);

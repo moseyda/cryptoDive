@@ -11,7 +11,7 @@ export interface MarketCoin {
   };
 }
 
-const API_BASE_URL = 'https://api.coingecko.com/api/v3';
+const API_BASE_URL = '/api/coingecko';
 
 export const fetchMarketTrends = async (
   coinIds: string[] = ['bitcoin', 'ethereum', 'solana', 'dogecoin', 'ripple']
