@@ -5,11 +5,18 @@ import LoginPage from './pages/LoginPage';
 import MarketsPage from './pages/MarketsPage';
 import LearnPage from './pages/LearnPage';
 import AboutPage from './pages/AboutPage';
+import FeaturesPage from './pages/FeaturesPage';
+import CareerPage from './pages/CareerPage';
+import SupportPage from './pages/SupportPage';
+import TermsPage from './pages/TermsPage';
+import PrivacyPage from './pages/PrivacyPage';
+import ScrollToTop from './components/ScrollToTop';
 import './index.css';
 
 export default function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-[#000625] text-white font-sans selection:bg-[#00ffa0]/30 overflow-x-clip">
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -18,6 +25,11 @@ export default function App() {
           <Route path="/markets" element={<MarketsPage />} />
           <Route path="/learn" element={<LearnPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/features" element={<FeaturesPage />} />
+          <Route path="/career" element={<CareerPage />} />
+          <Route path="/support" element={<SupportPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
         </Routes>
       </div>
     </Router>

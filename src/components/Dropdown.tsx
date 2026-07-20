@@ -7,14 +7,25 @@ export interface DropdownOption {
   icon?: string;
 }
 
-interface CurrencyDropdownProps {
+interface DropdownProps {
   options: DropdownOption[];
   value: string;
   onChange: (value: string) => void;
   align?: 'left' | 'right';
+  showSearch?: boolean;
+  fullWidth?: boolean;
+  variant?: 'inline' | 'form';
 }
 
-export default function CurrencyDropdown({ options, value, onChange, align = 'right' }: CurrencyDropdownProps) {
+export default function Dropdown({ 
+  options, 
+  value, 
+  onChange, 
+  align = 'right', 
+  showSearch = true, 
+  fullWidth = false,
+  variant = 'inline'
+}: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [openDirection, setOpenDirection] = useState<'down' | 'up'>('down');
@@ -66,17 +77,25 @@ export default function CurrencyDropdown({ options, value, onChange, align = 'ri
       {/* Dropdown Trigger */}
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 cursor-pointer hover:bg-white/10 p-2 rounded-lg transition-colors border border-transparent hover:border-gray-700"
+        className={`
+          flex items-center gap-2 cursor-pointer transition-colors 
+          ${variant === 'form' 
+            ? 'w-full justify-between bg-[#000625] border border-gray-800/60 rounded-[12px] px-4 py-3 text-white focus:outline-none hover:border-[#00ffa0]/50' 
+            : `hover:bg-white/10 p-2 rounded-lg border border-transparent hover:border-gray-700 ${fullWidth ? 'w-full justify-between' : ''}`
+          }
+        `}
       >
-        {selectedOption.icon && (
-          <img src={selectedOption.icon} alt={selectedOption.label} className="w-5 h-5 rounded-full object-cover flex-shrink-0" />
-        )}
-        <span className="text-white text-[16px] font-medium whitespace-nowrap">{selectedOption.label}</span>
-        {selectedOption.symbol && (
-          <span className="text-gray-400 font-medium text-[16px] flex-shrink-0">{selectedOption.symbol}</span>
-        )}
+        <div className="flex items-center gap-2">
+          {selectedOption.icon && (
+            <img src={selectedOption.icon} alt={selectedOption.label} className="w-5 h-5 rounded-full object-cover flex-shrink-0" />
+          )}
+          <span className="text-white text-[16px] font-medium whitespace-nowrap">{selectedOption.label}</span>
+          {selectedOption.symbol && (
+            <span className="text-gray-400 font-medium text-[16px] flex-shrink-0">{selectedOption.symbol}</span>
+          )}
+        </div>
         <svg
-          className={`w-4 h-4 flex-shrink-0 text-white transition-transform duration-200 ml-1 ${isOpen ? 'rotate-180' : ''}`}
+          className={`w-4 h-4 flex-shrink-0 text-white transition-transform duration-200 ${(fullWidth || variant === 'form') ? '' : 'ml-1'} ${isOpen ? 'rotate-180' : ''}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -88,24 +107,26 @@ export default function CurrencyDropdown({ options, value, onChange, align = 'ri
       {/* Dropdown Menu */}
       {isOpen && (
         <div
-          className={`absolute ${openDirection === 'up' ? 'bottom-full mb-2' : 'top-full mt-2'} w-56 bg-[#101428] border border-gray-700 rounded-xl shadow-2xl z-50 overflow-hidden ${align === 'right' ? 'right-0' : 'left-0'}`}
+          className={`absolute ${openDirection === 'up' ? 'bottom-full mb-2' : 'top-full mt-2'} ${fullWidth ? 'w-full' : 'w-56'} bg-[#101428] border border-gray-700 rounded-xl shadow-2xl z-50 overflow-hidden ${align === 'right' ? 'right-0' : 'left-0'}`}
         >
           {/* Search Input */}
-          <div className="p-2 border-b border-gray-700">
-            <div className="relative">
-              <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-              </svg>
-              <input
-                ref={searchInputRef}
-                type="text"
-                placeholder="Search..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-[#000625] text-white text-sm rounded-lg pl-9 pr-3 py-2 outline-none border border-transparent focus:border-[#00ffa0]/50 transition-colors placeholder-gray-500"
-              />
+          {showSearch && (
+            <div className="p-2 border-b border-gray-700">
+              <div className="relative">
+                <svg className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <input
+                  ref={searchInputRef}
+                  type="text"
+                  placeholder="Search..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full bg-[#000625] text-white text-sm rounded-lg pl-9 pr-3 py-2 outline-none border border-transparent focus:border-[#00ffa0]/50 transition-colors placeholder-gray-500"
+                />
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Options List */}
           <div className="max-h-60 overflow-y-auto custom-scrollbar py-2">

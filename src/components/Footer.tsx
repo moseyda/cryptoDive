@@ -4,15 +4,15 @@ import { GooglePlayButton, AppStoreButton } from './base/buttons/app-store-butto
 export default function Footer() {
   const quickLinks = [
     { label: 'About Us', href: '/about' }, 
-    { label: 'Feature', href: '#' }, 
-    { label: 'Career', href: '#' }, 
+    { label: 'Feature', href: '/features' }, 
+    { label: 'Career', href: '/career' }, 
     { label: 'Contact Us', href: '#' }
   ];
   const helpLinks = [
-    { label: 'Customer Support', href: '#' }, 
-    { label: 'Terms', href: '#' }, 
-    { label: 'Privacy', href: '#' }, 
-    { label: 'FAQs', href: '#' }
+    { label: 'Customer Support', href: '/support' }, 
+    { label: 'Terms', href: '/terms' }, 
+    { label: 'Privacy', href: '/privacy' }, 
+    { label: 'FAQs', href: '/#faq' }
   ];
   const otherLinks = [
     { label: 'Start Trading', href: '#' }, 

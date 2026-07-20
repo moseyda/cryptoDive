@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useCryptoRates } from '../hooks/useCryptoRates';
-import CurrencyDropdown, { type DropdownOption } from './CurrencyDropdown';
+import Dropdown, { type DropdownOption } from './Dropdown';
 
 const FIAT_OPTIONS: DropdownOption[] = [
   { value: 'usd', label: 'USD', symbol: '$' },
@@ -109,9 +109,9 @@ export default function ExchangeWidget() {
 
           <div className="ml-4">
             {isReversed ? (
-              <CurrencyDropdown options={CRYPTO_OPTIONS} value={cryptoCoin} onChange={setCryptoCoin} align="right" />
+              <Dropdown options={CRYPTO_OPTIONS} value={cryptoCoin} onChange={setCryptoCoin} align="right" />
             ) : (
-              <CurrencyDropdown options={FIAT_OPTIONS} value={fiatCurrency} onChange={setFiatCurrency} align="right" />
+              <Dropdown options={FIAT_OPTIONS} value={fiatCurrency} onChange={setFiatCurrency} align="right" />
             )}
           </div>
 
@@ -142,9 +142,9 @@ export default function ExchangeWidget() {
 
           <div className="ml-4">
             {isReversed ? (
-              <CurrencyDropdown options={FIAT_OPTIONS} value={fiatCurrency} onChange={setFiatCurrency} align="right" />
+              <Dropdown options={FIAT_OPTIONS} value={fiatCurrency} onChange={setFiatCurrency} align="right" />
             ) : (
-              <CurrencyDropdown options={CRYPTO_OPTIONS} value={cryptoCoin} onChange={setCryptoCoin} align="right" />
+              <Dropdown options={CRYPTO_OPTIONS} value={cryptoCoin} onChange={setCryptoCoin} align="right" />
             )}
           </div>
         </div>
