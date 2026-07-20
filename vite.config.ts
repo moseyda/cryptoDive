@@ -19,6 +19,11 @@ export default defineConfig({
         target: 'https://min-api.cryptocompare.com/data/v2',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/cryptocompare/, '')
+      },
+      '/api/jobicy': {
+        target: 'https://jobicy.com/api/v2',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/jobicy/, '')
       }
     }
   }
