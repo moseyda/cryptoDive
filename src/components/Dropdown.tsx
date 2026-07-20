@@ -14,9 +14,18 @@ interface DropdownProps {
   align?: 'left' | 'right';
   showSearch?: boolean;
   fullWidth?: boolean;
+  variant?: 'inline' | 'form';
 }
 
-export default function Dropdown({ options, value, onChange, align = 'right', showSearch = true, fullWidth = false }: DropdownProps) {
+export default function Dropdown({ 
+  options, 
+  value, 
+  onChange, 
+  align = 'right', 
+  showSearch = true, 
+  fullWidth = false,
+  variant = 'inline'
+}: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [openDirection, setOpenDirection] = useState<'down' | 'up'>('down');
@@ -68,7 +77,13 @@ export default function Dropdown({ options, value, onChange, align = 'right', sh
       {/* Dropdown Trigger */}
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-2 cursor-pointer hover:bg-white/10 p-2 rounded-lg transition-colors border border-transparent hover:border-gray-700 ${fullWidth ? 'w-full justify-between' : ''}`}
+        className={`
+          flex items-center gap-2 cursor-pointer transition-colors 
+          ${variant === 'form' 
+            ? 'w-full justify-between bg-[#000625] border border-gray-800/60 rounded-[12px] px-4 py-3 text-white focus:outline-none hover:border-[#00ffa0]/50' 
+            : `hover:bg-white/10 p-2 rounded-lg border border-transparent hover:border-gray-700 ${fullWidth ? 'w-full justify-between' : ''}`
+          }
+        `}
       >
         <div className="flex items-center gap-2">
           {selectedOption.icon && (
@@ -80,7 +95,7 @@ export default function Dropdown({ options, value, onChange, align = 'right', sh
           )}
         </div>
         <svg
-          className={`w-4 h-4 flex-shrink-0 text-white transition-transform duration-200 ${fullWidth ? '' : 'ml-1'} ${isOpen ? 'rotate-180' : ''}`}
+          className={`w-4 h-4 flex-shrink-0 text-white transition-transform duration-200 ${(fullWidth || variant === 'form') ? '' : 'ml-1'} ${isOpen ? 'rotate-180' : ''}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
