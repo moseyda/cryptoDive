@@ -9,6 +9,7 @@ import FeaturesPage from './pages/FeaturesPage';
 import CareerPage from './pages/CareerPage';
 import SupportPage from './pages/SupportPage';
 import TermsPage from './pages/TermsPage';
+import PrivacyPage from './pages/PrivacyPage';
 import ScrollToTop from './components/ScrollToTop';
 import './index.css';
 
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/career" element={<CareerPage />} />
           <Route path="/support" element={<SupportPage />} />
           <Route path="/terms" element={<TermsPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
         </Routes>
       </div>
     </Router>

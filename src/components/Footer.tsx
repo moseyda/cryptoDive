@@ -11,7 +11,7 @@ export default function Footer() {
   const helpLinks = [
     { label: 'Customer Support', href: '/support' }, 
     { label: 'Terms', href: '/terms' }, 
-    { label: 'Privacy', href: '#' }, 
+    { label: 'Privacy', href: '/privacy' }, 
     { label: 'FAQs', href: '#' }
   ];
   const otherLinks = [
