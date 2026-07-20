@@ -13,7 +13,7 @@ export interface CryptoJob {
 
 export async function fetchCryptoJobs(): Promise<CryptoJob[]> {
   try {
-    const response = await fetch('/api/jobicy/remote-jobs?industry=web3');
+    const response = await fetch('/api/jobicy/remote-jobs?tag=crypto');
     if (!response.ok) {
       throw new Error('Failed to fetch jobs');
     }
