@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AdvancedRealTimeChart } from "react-ts-tradingview-widgets";
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SparklineChart from '../components/SparklineChart';
@@ -17,6 +18,7 @@ const CATEGORIES = [
 export default function MarketsPage() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [expandedCoinId, setExpandedCoinId] = useState<string | null>(null);
 
   // Map local categories (gainers/losers) to 'all' for the API
   const apiCategory = ['all', 'gainers', 'losers'].includes(activeCategory) ? 'all' : activeCategory;
@@ -152,12 +154,14 @@ export default function MarketsPage() {
                     }).format(coin.market_cap || 0);
 
                     return (
-                      <div 
-                        key={coin.id}
-                        className="flex flex-col md:flex-row items-start md:items-center justify-between p-4 bg-transparent hover:bg-white/5 rounded-xl transition-colors group cursor-pointer border border-transparent hover:border-white/10"
-                      >
-                        {/* Rank */}
-                        <div className="hidden md:block w-[8%] text-white/40 font-medium">
+                      <div key={coin.id} className="flex flex-col bg-transparent hover:bg-white/5 rounded-xl transition-colors border border-transparent hover:border-white/10 overflow-hidden">
+                        {/* Main Row */}
+                        <div 
+                          onClick={() => setExpandedCoinId(expandedCoinId === coin.id ? null : coin.id)}
+                          className="flex flex-col md:flex-row items-start md:items-center justify-between p-4 group cursor-pointer w-full"
+                        >
+                          {/* Rank */}
+                          <div className="hidden md:block w-[8%] text-white/40 font-medium">
                           {index + 1}
                         </div>
 
@@ -197,15 +201,30 @@ export default function MarketsPage() {
                           {formattedMarketCap}
                         </div>
 
-                        {/* Chart */}
-                        <div className="w-full md:w-[14%] flex justify-center mt-4 md:mt-0">
-                          <SparklineChart 
-                            data={coin.sparkline_in_7d?.price || []} 
-                            color={chartColor} 
-                            width={80} 
-                            height={30} 
-                          />
+                          {/* Chart */}
+                          <div className="w-full md:w-[14%] flex justify-center mt-4 md:mt-0">
+                            <SparklineChart 
+                              data={coin.sparkline_in_7d?.price || []} 
+                              color={chartColor} 
+                              width={80} 
+                              height={30} 
+                            />
+                          </div>
                         </div>
+
+                        {/* Expandable TradingView Chart */}
+                        {expandedCoinId === coin.id && (
+                          <div className="w-full h-[400px] border-t border-gray-800/50 p-4 bg-[#0a0e27] animate-in slide-in-from-top-2 fade-in duration-300">
+                            <AdvancedRealTimeChart 
+                              theme="dark" 
+                              symbol={`${coin.symbol.toUpperCase()}USD`} 
+                              autosize 
+                              hide_side_toolbar={false}
+                              allow_symbol_change={false}
+                              backgroundColor="#0a0e27"
+                            />
+                          </div>
+                        )}
                       </div>
                     );
                   })}
