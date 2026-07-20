@@ -9,7 +9,7 @@ export default function Footer() {
     { label: 'Contact Us', href: '#' }
   ];
   const helpLinks = [
-    { label: 'Customer Support', href: '#' }, 
+    { label: 'Customer Support', href: '/support' }, 
     { label: 'Terms', href: '#' }, 
     { label: 'Privacy', href: '#' }, 
     { label: 'FAQs', href: '#' }

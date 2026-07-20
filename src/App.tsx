@@ -7,6 +7,7 @@ import LearnPage from './pages/LearnPage';
 import AboutPage from './pages/AboutPage';
 import FeaturesPage from './pages/FeaturesPage';
 import CareerPage from './pages/CareerPage';
+import SupportPage from './pages/SupportPage';
 import ScrollToTop from './components/ScrollToTop';
 import './index.css';
 
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/features" element={<FeaturesPage />} />
           <Route path="/career" element={<CareerPage />} />
+          <Route path="/support" element={<SupportPage />} />
         </Routes>
       </div>
     </Router>
