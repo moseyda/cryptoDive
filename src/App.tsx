@@ -5,11 +5,13 @@ import LoginPage from './pages/LoginPage';
 import MarketsPage from './pages/MarketsPage';
 import LearnPage from './pages/LearnPage';
 import AboutPage from './pages/AboutPage';
+import ScrollToTop from './components/ScrollToTop';
 import './index.css';
 
 export default function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-[#000625] text-white font-sans selection:bg-[#00ffa0]/30 overflow-x-clip">
         <Routes>
           <Route path="/" element={<LandingPage />} />
