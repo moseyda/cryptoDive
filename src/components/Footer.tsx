@@ -4,7 +4,7 @@ import { GooglePlayButton, AppStoreButton } from './base/buttons/app-store-butto
 export default function Footer() {
   const quickLinks = [
     { label: 'About Us', href: '/about' }, 
-    { label: 'Feature', href: '#' }, 
+    { label: 'Feature', href: '/features' }, 
     { label: 'Career', href: '#' }, 
     { label: 'Contact Us', href: '#' }
   ];
