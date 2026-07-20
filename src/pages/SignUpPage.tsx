@@ -5,6 +5,14 @@ export default function SignUpPage() {
   const [step, setStep] = useState(0);
   const [agreed, setAgreed] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [password, setPassword] = useState('');
+
+  const rules = {
+    length: password.length >= 8,
+    uppercase: /[A-Z]/.test(password),
+    number: /[0-9]/.test(password),
+  };
+  const isPasswordValid = rules.length && rules.uppercase && rules.number;
 
   return (
     <div className="min-h-screen w-full relative bg-[#000625] flex flex-col">
@@ -188,9 +196,11 @@ export default function SignUpPage() {
                   {/* Password Field */}
                 <div className="w-full flex flex-col mb-8 relative">
                   <label className="text-white/80 text-[14px] mb-2 font-medium">Password</label>
-                  <div className="relative w-full">
+                  <div className="relative w-full mb-4">
                     <input
                       type={showPassword ? "text" : "password"}
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       className="w-full h-[48px] bg-transparent border border-white/20 rounded-[8px] pl-4 pr-12 text-white outline-none focus:border-[#00ffa0] transition-colors"
                     />
                     <button
@@ -211,11 +221,32 @@ export default function SignUpPage() {
                       )}
                     </button>
                   </div>
+                  
+                  {/* Password Rules */}
+                  <div className="flex flex-col gap-2 mt-2">
+                    <div className={`flex items-center gap-2 text-[13px] transition-colors ${rules.length ? 'text-[#00ffa0]' : 'text-white/40'}`}>
+                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                       At least 8 characters
+                    </div>
+                    <div className={`flex items-center gap-2 text-[13px] transition-colors ${rules.uppercase ? 'text-[#00ffa0]' : 'text-white/40'}`}>
+                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                       At least 1 uppercase letter
+                    </div>
+                    <div className={`flex items-center gap-2 text-[13px] transition-colors ${rules.number ? 'text-[#00ffa0]' : 'text-white/40'}`}>
+                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                       At least 1 number
+                    </div>
+                  </div>
                 </div>
 
                   {/* Primary CTA */}
                   <button 
-                    className="w-full h-[48px] bg-[#00ffa0] text-[#000625] text-[16px] font-semibold rounded-[8px] mb-8 flex items-center justify-center hover:bg-[#00ffa0]/90 transition-all duration-300 cursor-pointer shadow-[0_0_15px_rgba(0,255,160,0.3)]"
+                    disabled={!isPasswordValid}
+                    className={`w-full h-[48px] text-[16px] font-semibold rounded-[8px] mb-8 flex items-center justify-center transition-all duration-300 ${
+                      isPasswordValid 
+                        ? 'bg-[#00ffa0] text-[#000625] hover:bg-[#00ffa0]/90 cursor-pointer shadow-[0_0_15px_rgba(0,255,160,0.3)]' 
+                        : 'bg-white/10 text-white/40 cursor-not-allowed'
+                    }`}
                   >
                     Sign Up
                   </button>
