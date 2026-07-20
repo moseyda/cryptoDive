@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Mail, MessageCircle, Phone, ChevronDown } from 'lucide-react';
+import Dropdown from '../components/Dropdown';
 
 const CONTACT_METHODS = [
   {
@@ -43,8 +44,16 @@ const FAQS = [
   }
 ];
 
+const CATEGORY_OPTIONS = [
+  { value: 'account', label: 'Account Access' },
+  { value: 'deposit', label: 'Deposits & Withdrawals' },
+  { value: 'trading', label: 'Trading' },
+  { value: 'other', label: 'Other' }
+];
+
 export default function SupportPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [category, setCategory] = useState('account');
 
   return (
     <div className="min-h-screen bg-[#000625] text-white font-sans overflow-x-clip flex flex-col">
@@ -149,12 +158,16 @@ export default function SupportPage() {
 
                 <div className="space-y-2">
                   <label className="text-[14px] font-medium text-white/60">Category</label>
-                  <select className="w-full bg-[#000625] border border-gray-800/60 rounded-[12px] px-4 py-3 text-white focus:outline-none focus:border-[#00ffa0]/50 transition-colors appearance-none">
-                    <option value="account">Account Access</option>
-                    <option value="deposit">Deposits & Withdrawals</option>
-                    <option value="trading">Trading</option>
-                    <option value="other">Other</option>
-                  </select>
+                  <div className="w-full bg-[#000625] border border-gray-800/60 rounded-[12px] px-2 py-1 transition-colors hover:border-gray-600">
+                    <Dropdown 
+                      options={CATEGORY_OPTIONS} 
+                      value={category} 
+                      onChange={setCategory} 
+                      align="left" 
+                      showSearch={false}
+                      fullWidth={true}
+                    />
+                  </div>
                 </div>
 
                 <div className="space-y-2">

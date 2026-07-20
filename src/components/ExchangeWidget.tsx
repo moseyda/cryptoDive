@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useCryptoRates } from '../hooks/useCryptoRates';
-import CurrencyDropdown, { type DropdownOption } from './CurrencyDropdown';
+import Dropdown, { type DropdownOption } from './Dropdown';
 
 const FIAT_OPTIONS: DropdownOption[] = [
   { value: 'usd', label: 'USD', symbol: '$' },
