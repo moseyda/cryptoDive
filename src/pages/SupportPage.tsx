@@ -158,16 +158,15 @@ export default function SupportPage() {
 
                 <div className="space-y-2">
                   <label className="text-[14px] font-medium text-white/60">Category</label>
-                  <div className="w-full bg-[#000625] border border-gray-800/60 rounded-[12px] px-2 py-1 transition-colors hover:border-gray-600">
-                    <Dropdown 
-                      options={CATEGORY_OPTIONS} 
-                      value={category} 
-                      onChange={setCategory} 
-                      align="left" 
-                      showSearch={false}
-                      fullWidth={true}
-                    />
-                  </div>
+                  <Dropdown 
+                    options={CATEGORY_OPTIONS} 
+                    value={category} 
+                    onChange={setCategory} 
+                    align="left" 
+                    showSearch={false}
+                    fullWidth={true}
+                    variant="form"
+                  />
                 </div>
 
                 <div className="space-y-2">
