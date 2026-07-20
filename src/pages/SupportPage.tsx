@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { Mail, MessageCircle, Phone } from 'lucide-react';
+import { Mail, MessageCircle, Phone, ChevronDown } from 'lucide-react';
 
 const CONTACT_METHODS = [
   {
@@ -23,7 +24,28 @@ const CONTACT_METHODS = [
   }
 ];
 
+const FAQS = [
+  {
+    q: 'How do I withdraw my funds?',
+    a: "Go to your wallet, select 'Withdraw', enter the destination address, and confirm via 2FA."
+  },
+  {
+    q: 'Are my assets safe?',
+    a: "Yes. We use cold storage for 95% of assets and enforce mandatory 2FA on all accounts."
+  },
+  {
+    q: 'I lost my 2FA device.',
+    a: "Contact our security team using the form below with your identity verification documents to reset your access."
+  },
+  {
+    q: 'What are the trading fees?',
+    a: "We charge a flat 0.1% fee on all spot trades. There are no hidden deposit fees."
+  }
+];
+
 export default function SupportPage() {
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
   return (
     <div className="min-h-screen bg-[#000625] text-white font-sans overflow-x-clip flex flex-col">
       <Navbar />
@@ -63,6 +85,99 @@ export default function SupportPage() {
           })}
         </div>
 
+        {/* FAQ & Form Split Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 max-w-[1100px] mx-auto">
+          
+          {/* FAQ Accordion */}
+          <div>
+            <h2 className="text-[28px] font-bold text-white mb-8">Common Questions</h2>
+            <div className="space-y-4">
+              {FAQS.map((faq, idx) => {
+                const isOpen = openFaq === idx;
+                return (
+                  <div 
+                    key={idx}
+                    className={`bg-[#101428]/60 border rounded-[16px] overflow-hidden transition-all duration-300 ${isOpen ? 'border-[#00ffa0]/30' : 'border-gray-800/60'}`}
+                  >
+                    <button
+                      onClick={() => setOpenFaq(isOpen ? null : idx)}
+                      className="w-full flex items-center justify-between p-6 text-left"
+                    >
+                      <span className="font-semibold text-[16px] md:text-[18px] text-white pr-4">
+                        {faq.q}
+                      </span>
+                      <ChevronDown className={`w-5 h-5 text-white/40 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-[#00ffa0]' : ''}`} />
+                    </button>
+                    
+                    <div 
+                      className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-40 pb-6 opacity-100' : 'max-h-0 opacity-0'}`}
+                    >
+                      <p className="text-white/60 text-[15px] leading-relaxed">
+                        {faq.a}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Ticket Form */}
+          <div>
+            <h2 className="text-[28px] font-bold text-white mb-8">Submit a Ticket</h2>
+            <form className="bg-[#101428]/60 border border-gray-800/60 rounded-[24px] p-8" onSubmit={(e) => e.preventDefault()}>
+              <div className="space-y-5">
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div className="space-y-2">
+                    <label className="text-[14px] font-medium text-white/60">Name</label>
+                    <input 
+                      type="text" 
+                      placeholder="Jane Doe" 
+                      className="w-full bg-[#000625] border border-gray-800/60 rounded-[12px] px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-[#00ffa0]/50 transition-colors"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[14px] font-medium text-white/60">Email</label>
+                    <input 
+                      type="email" 
+                      placeholder="jane@example.com" 
+                      className="w-full bg-[#000625] border border-gray-800/60 rounded-[12px] px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-[#00ffa0]/50 transition-colors"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-[14px] font-medium text-white/60">Category</label>
+                  <select className="w-full bg-[#000625] border border-gray-800/60 rounded-[12px] px-4 py-3 text-white focus:outline-none focus:border-[#00ffa0]/50 transition-colors appearance-none">
+                    <option value="account">Account Access</option>
+                    <option value="deposit">Deposits & Withdrawals</option>
+                    <option value="trading">Trading</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-[14px] font-medium text-white/60">Message</label>
+                  <textarea 
+                    rows={4}
+                    placeholder="Describe your issue..." 
+                    className="w-full bg-[#000625] border border-gray-800/60 rounded-[12px] px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-[#00ffa0]/50 transition-colors resize-none"
+                  ></textarea>
+                </div>
+
+                <button 
+                  type="submit"
+                  className="w-full bg-[#00ffa0] hover:bg-white text-black font-bold text-[16px] py-4 rounded-[12px] transition-colors duration-300 mt-2"
+                >
+                  Submit Ticket
+                </button>
+
+              </div>
+            </form>
+          </div>
+
+        </div>
       </main>
 
       <Footer />
