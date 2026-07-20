@@ -42,7 +42,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className="w-full relative z-20 py-16 mt-20 md:mt-24">
+    <section id="faq" className="w-full relative z-20 py-16 mt-20 md:mt-24">
       <div className="w-full max-w-[1350px] mx-auto px-4 relative">
         {/* Ambient Background Glows */}
         <div className="absolute top-[10%] left-[-5%] md:left-[-10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-[#00ffa0]/10 rounded-full blur-[120px] md:blur-[180px] -z-10 pointer-events-none" />

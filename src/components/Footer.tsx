@@ -12,7 +12,7 @@ export default function Footer() {
     { label: 'Customer Support', href: '/support' }, 
     { label: 'Terms', href: '/terms' }, 
     { label: 'Privacy', href: '/privacy' }, 
-    { label: 'FAQs', href: '#' }
+    { label: 'FAQs', href: '/#faq' }
   ];
   const otherLinks = [
     { label: 'Start Trading', href: '#' }, 
