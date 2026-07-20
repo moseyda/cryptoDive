@@ -102,26 +102,28 @@ export default function SupportPage() {
             <h2 className="text-[28px] font-bold text-white mb-8">Common Questions</h2>
             <div className="space-y-4">
               {FAQS.map((faq, idx) => {
-                const isOpen = openFaq === idx;
+                const isExpanded = openFaq === idx;
                 return (
                   <div 
                     key={idx}
-                    className={`bg-[#101428]/60 border rounded-[16px] overflow-hidden transition-all duration-300 ${isOpen ? 'border-[#00ffa0]/30' : 'border-gray-800/60'}`}
+                    className={`border-b ${isExpanded ? 'border-[#00ffa0]' : 'border-gray-700/50'} pb-6 transition-colors duration-300`}
                   >
                     <button
-                      onClick={() => setOpenFaq(isOpen ? null : idx)}
-                      className="w-full flex items-center justify-between p-6 text-left"
+                      onClick={() => setOpenFaq(isExpanded ? null : idx)}
+                      className="w-full flex items-center justify-between py-4 text-left group focus:outline-none"
                     >
-                      <span className="font-semibold text-[16px] md:text-[18px] text-white pr-4">
+                      <span className={`text-[16px] md:text-[20px] font-medium transition-colors pr-8 ${isExpanded ? 'text-[#00ffa0]' : 'text-white group-hover:text-[#00ffa0]'}`}>
                         {faq.q}
                       </span>
-                      <ChevronDown className={`w-5 h-5 text-white/40 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-[#00ffa0]' : ''}`} />
+                      <span className={`flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full transition-colors ${isExpanded ? 'bg-[#00ffa0] text-black' : 'bg-[#00ffa0]/10 text-[#00ffa0] group-hover:bg-[#00ffa0]/20'}`}>
+                        <ChevronDown size={20} className={`transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
+                      </span>
                     </button>
                     
                     <div 
-                      className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-40 pb-6 opacity-100' : 'max-h-0 opacity-0'}`}
+                      className={`overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-96 opacity-100 mt-2' : 'max-h-0 opacity-0'}`}
                     >
-                      <p className="text-white/60 text-[15px] leading-relaxed">
+                      <p className="text-white/60 text-[14px] md:text-[16px] leading-relaxed pr-10 lg:pr-20">
                         {faq.a}
                       </p>
                     </div>
