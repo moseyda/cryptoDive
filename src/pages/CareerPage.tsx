@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { fetchCryptoJobs, CryptoJob } from '../api/career';
+import { fetchCryptoJobs } from '../api/career';
+import type { CryptoJob } from '../api/career';
 import { Briefcase, MapPin, ExternalLink, Clock } from 'lucide-react';
 
 export default function CareerPage() {
