@@ -11,7 +11,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#000625]/40 backdrop-blur-md border-b border-white/5">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#000625]/90 backdrop-blur-md border-b border-white/10 shadow-lg' : 'bg-[#000625]/40 backdrop-blur-md border-b border-white/5'}`}>
       <nav className="flex items-center justify-between px-6 py-5 max-w-[1350px] mx-auto w-full">
         {/* Logo */}
         <Link to="/" className="flex items-center cursor-pointer">
