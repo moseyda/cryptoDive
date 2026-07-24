@@ -29,7 +29,6 @@ export default function LiveActivityBackground() {
   const [activities, setActivities] = useState<Activity[]>([]);
 
   useEffect(() => {
-    let idCounter = 0;
 
     const spawnActivity = (isLeft: boolean) => {
       const coin = COINS[Math.floor(Math.random() * COINS.length)];
